@@ -1,0 +1,100 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600,700);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic,700italic);
+@import url(http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic);
+
+body { 
+	font-family: Lora; 
+	padding: 1cm 0 2cm 4cm;
+	width: 640px;
+}
+
+h1 { font-size: 56px; font-weight: normal; letter-spacing: -0.01em; text-align: center; margin-bottom: 1.5em; }
+h2 { margin-bottom: -4px; font-size: 28px; line-height: 1em; }
+
+footer {
+	font-size: 80%;
+	text-align: right;
+	display: block;
+	color: #444;
+}
+footer a {
+	color: inherit;
+}
+
+.work {
+	border-radius: 5px;
+	width: 100%;
+	margin-bottom: 2em;
+	border-top: 3px solid black;
+	border-bottom: 3px solid black;
+	border-spacing: 0 3px;
+}
+.work tr {
+	height: 90px;
+}
+.work th {
+	width: 40%;
+	font-weight: normal;
+	text-align: right;
+	padding-right: 15px; 
+}
+.work th a {
+	text-decoration: none; 
+}
+.work th a:visited {
+	color: inherit;
+}
+
+.silk {
+	background-color: #f4f2e6;
+}
+.silk th {
+	background-image: url(http://www.silkdi.com/assets/img/logo.png);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	font-style: italic;
+	font-weight: 300;
+	font-size: 24px;
+}
+
+.bruno {
+	background-color: #c3ccd1;
+	background-color: #69402e;
+	background-image: url(http://www.bruno-lang.com/assets/img/noisy-2.png);
+}
+.bruno th {
+	font-weight: normal;
+	letter-spacing: -0.03em;
+	color: #fcd937;
+	font-size: 72px;
+}
+
+.frac64 th {
+	letter-spacing: -5px;
+	font-weight: 700;
+	font-size: 52px;
+	font-family: "Source Sans Pro";
+}
+.frac64 {
+	background-color: #EEDDC0;
+}
+
+.none {
+	background-color: #F5F1DC;
+}
+.none th {
+	font-style: normal;
+	font-size: 48px;
+	font-weight: bold;
+	letter-spacing: -0.05em;
+	font-family: "Source Code Pro";
+	white-space: nowrap;
+}
+.none th small {
+	font-size: 24px;
+	text-transform: uppercase;
+	font-weight: normal;
+	letter-spacing: -0.05em;
+	font-family: "Source Code Pro";
+	color: #79443B;
+}
