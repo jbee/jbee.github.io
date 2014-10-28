@@ -44,6 +44,12 @@ footer a {
 .work th a:visited {
 	color: inherit;
 }
+.work td {
+	cursor: pointer;
+	padding-left: 2em;
+	padding-right: 2em; 
+	font-style: italic;
+}
 
 .silk {
 	background-color: #f4f2e6;
@@ -67,6 +73,9 @@ footer a {
 	letter-spacing: -0.03em;
 	color: #fcd937;
 	font-size: 72px;
+}
+.bruno td {
+	color: #fcd937;
 }
 
 .frac64 th {
