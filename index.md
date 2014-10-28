@@ -25,7 +25,7 @@ title: "Jan Bernitt"
 ## Work Accomplished
 <table class="work">
 <tr class="silk">
-	<th><a href="http://www.silkdi.com/">silk<br/><small>Dependency Injection</small></a></th>
+	<th><a href="http://www.silkdi.com/">silk</a></th>
 	<td onclick="window.open('http://www.silkdi.com/', '_self')">... is a "configuration as code" dependency injection container for Java free from meta-programming like annotations etcetera.</td>
 </tr>
 </table>
