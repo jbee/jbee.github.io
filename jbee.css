@@ -9,7 +9,7 @@ body {
 }
 
 h1 { font-size: 56px; font-weight: normal; letter-spacing: -0.01em; text-align: center; margin-bottom: 1.5em; }
-h2 { margin-bottom: -4px; font-size: 28px; line-height: 1em; }
+h2 { margin-bottom: -4px; font-size: 28px; line-height: 1em; margin-top: 2.5em; }
 
 footer {
 	font-size: 80%;
@@ -36,7 +36,9 @@ footer a {
 	width: 40%;
 	font-weight: normal;
 	text-align: right;
-	padding-right: 15px; 
+	padding-right: 15px;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
 }
 .work th a {
 	text-decoration: none; 
@@ -49,6 +51,8 @@ footer a {
 	padding-left: 2em;
 	padding-right: 2em; 
 	font-style: italic;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 .silk {
@@ -106,4 +110,15 @@ footer a {
 	letter-spacing: -0.05em;
 	font-family: "Source Code Pro";
 	color: #79443B;
+}
+
+.lingukit {
+	background-color: #E9E0C0;
+	background-image: url(http://www.bruno-lang.com/assets/img/noisy-2.png);
+}
+.lingukit th {
+	font-size: 56px;
+	font-family: "Lora";
+	letter-spacing: -0.08em;
+	color: #69402e;
 }
