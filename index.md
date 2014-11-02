@@ -14,7 +14,7 @@ title: "Jan Bernitt"
 </tr>
 <tr class="frac64">
 	<th><a href="http://frac64.github.io/">FRAC&nbsp;64</a></th>
-	<td onclick="window.open('http://frac64.github.io/', '_self')">use fraction "primitives"</td>
+	<td onclick="window.open('http://frac64.github.io/', '_self')">make fractions "primitives"</td>
 </tr>
 <tr class="bruno">
 	<th><a href="http://www.bruno-lang.com/">bruno</a></th>
@@ -26,10 +26,10 @@ title: "Jan Bernitt"
 <table class="work">
 <tr class="lingukit">
 	<th><a href="https://github.com/bruno-lang/lingukit">lingukit</a></th>
-	<td onclick="window.open('https://github.com/bruno-lang/lingukit', '_self')">parse without theoretical yadda yadda yadda</td>
+	<td onclick="window.open('https://github.com/bruno-lang/lingukit', '_self')">parsed without theoretical yadda yadda yadda</td>
 </tr>
 <tr class="silk">
 	<th><a href="http://www.silkdi.com/">silk</a></th>
-	<td onclick="window.open('http://www.silkdi.com/', '_self')">until there: at least have reasonable dependency injection</td>
+	<td onclick="window.open('http://www.silkdi.com/', '_self')">if it has to be java - have reasonable dependency injection available</td>
 </tr>
 </table>
