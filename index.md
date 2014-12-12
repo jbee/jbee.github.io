@@ -34,10 +34,10 @@ title: "Jan Bernitt"
 </tr>
 </table>
 
-## Looking Out...
+## Search for Perspective
 <table class="work">
 <tr class="bruno">
-	<th>machine design</th>
+	<th><small>machine design</small></th>
 	<td>What is beyond register and stack machines?</td>
 </tr>
 </table>
