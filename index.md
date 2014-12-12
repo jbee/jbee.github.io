@@ -14,11 +14,11 @@ title: "Jan Bernitt"
 </tr>
 <tr class="frac64">
 	<th><a href="http://frac64.github.io/">FRAC&nbsp;64</a></th>
-	<td onclick="window.open('http://frac64.github.io/', '_self')">make fractions "primitives"</td>
+	<td onclick="window.open('http://frac64.github.io/', '_self')">make fractions "primitives", in</td>
 </tr>
 <tr class="bruno">
 	<th><a href="http://www.bruno-lang.com/">bruno</a></th>
-	<td onclick="window.open('http://www.bruno-lang.com/', '_self')">in modular, reasonable correct programs</td>
+	<td onclick="window.open('http://www.bruno-lang.com/', '_self')">modular, reasonable correct programs</td>
 </tr>
 </table>
 
@@ -34,10 +34,10 @@ title: "Jan Bernitt"
 </tr>
 </table>
 
-## Search for Perspective
+## Rethinking...
 <table class="work">
-<tr class="bruno">
+<tr class="vm">
 	<th><small>machine design</small></th>
-	<td>What is beyond register and stack machines?</td>
+	<td>machines without registers or stacks</td>
 </tr>
 </table>
