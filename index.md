@@ -35,3 +35,9 @@ title: "Jan Bernitt"
 </table>
 
 ## Looking Out...
+<table class="none">
+<tr>
+	<th>VM-Model</th>
+	<td>What is beyond register and stack machines?</td>
+</tr>
+</table>
