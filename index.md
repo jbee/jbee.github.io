@@ -5,7 +5,7 @@ title: "Jan Bernitt"
 
 # Jan Bernitt
 
-## Work in Progress
+## Solving...
 <table class="work">
 <tr class="none">
 	<th><a href="http://non-encoding.github.io/">non<small>-</small>e<small>coding</small></a></th>
@@ -22,7 +22,7 @@ title: "Jan Bernitt"
 </tr>
 </table>
 
-## Work Accomplished
+## Solved.
 <table class="work">
 <tr class="lingukit">
 	<th><a href="https://github.com/bruno-lang/lingukit">lingukit</a></th>
@@ -33,3 +33,5 @@ title: "Jan Bernitt"
 	<td onclick="window.open('http://www.silkdi.com/', '_self')">if it has to be java - have reasonable dependency injection available</td>
 </tr>
 </table>
+
+## Looking Out...
