@@ -37,7 +37,7 @@ title: "Jan Bernitt"
 ## Looking Out...
 <table class="work">
 <tr class="bruno">
-	<th>VM-Model</th>
+	<th>machine design</th>
 	<td>What is beyond register and stack machines?</td>
 </tr>
 </table>
