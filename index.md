@@ -25,7 +25,7 @@ title: "Jan Bernitt"
 ## Solved.
 <table class="work">
 <tr class="lingukit">
-	<th><a href="https://github.com/bruno-lang/lingukit">lingukit</a></th>
+	<th><a href="https://github.com/bruno-lang/lingukit">alma</a></th>
 	<td onclick="window.open('https://github.com/bruno-lang/lingukit', '_self')">parsed without theoretical yadda yadda yadda</td>
 </tr>
 <tr class="silk">
@@ -38,6 +38,6 @@ title: "Jan Bernitt"
 <table class="work">
 <tr class="vm">
 	<th><small>machine design</small></th>
-	<td>machines without registers or stacks</td>
+	<td>beyond classic register or stack machine models</td>
 </tr>
 </table>
