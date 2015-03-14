@@ -9,16 +9,16 @@ body {
 	margin: 0 auto;
 	width: 640px;
 	text-align: center;
+	color: #777;
 }
 
 h1 { font-size: 56px; font-weight: 400; letter-spacing: -0.01em; text-align: center; }
-h2 { margin-bottom: -4px; font-size: 28px; line-height: 1em; margin-top: 2.5em; }
 
 footer {
+	margin-top: 5em;
 	font-size: 80%;
-	text-align: right;
 	display: block;
-	color: #444;
+	color: #666;
 }
 footer a {
 	color: inherit;
@@ -29,7 +29,7 @@ a {
 	color: black;
 }
 a:visited {
-	color: inherit;
+	color: black;
 }
 
 .silk {
@@ -45,7 +45,6 @@ a:visited {
 }
 .and {
 	font-size: 56px;
-	color: #999;
 }
 .bruno {
 	font-size: 72px;

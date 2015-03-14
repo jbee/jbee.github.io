@@ -10,5 +10,7 @@ title: "Jan Bernitt"
 <a href="http://frac64.github.io/" class="frac64">FRAC&nbsp;64</a>
 <br/>
 <a href="http://www.silkdi.com/" class="silk">silk</a>
+<br/>
+by
 
 # <a href="mailto:jaanbernitt+jbee.se@gmail.com">Jan Bernitt</a>
