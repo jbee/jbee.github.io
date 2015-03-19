@@ -13,6 +13,9 @@ body {
 }
 
 h1 { font-size: 56px; font-weight: 400; letter-spacing: -0.01em; text-align: center; }
+h2 { font-weight: 400; font-size: 48px; padding-bottom: 0; margin-bottom: 0; line-height: 1em; }
+h2 + p { margin: 0; }
+
 
 footer {
 	margin-top: 5em;
@@ -24,7 +27,7 @@ footer a {
 	color: inherit;
 }
 
-a {
+h1, h2, a {
 	text-decoration: none;
 	color: black;
 }
