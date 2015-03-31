@@ -17,6 +17,10 @@ by
 
 # <a href="mailto:jaanbernitt+jbee.se@gmail.com">Jan Bernitt</a>
 
+on <a href="https://github.com/jbee">github</a>
+
 ## <a href="janbernitt_cv_en.pdf" title="CV in english" lang="en">CV</a>
 
-<a href="janbernitt_cv_sv.pdf" title="CV på svenska" lang="sv">(finns också på svenska)</a>
+(finns också<a href="janbernitt_cv_sv.pdf" title="CV på svenska" lang="sv"> på svenska</a>)
+
+
