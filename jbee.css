@@ -1,20 +1,27 @@
-@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600,700);
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic,700italic);
-@import url(http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic);
-@import url(http://fonts.googleapis.com/css?family=Radley:400italic,400);
+@import url(http://fonts.googleapis.com/css?family=Vidaloka:400italic,400);
+@import url(http://fonts.googleapis.com/css?family=Glass+Antiqua:400italic,400);
+@import url(http://fonts.googleapis.com/css?family=Old+Standard+TT:400italic,400);
+
+/* This are also nice but not used here...
+@import url(http://fonts.googleapis.com/css?family=EB+Garamond:400italic,400);
+@import url(http://fonts.googleapis.com/css?family=Prata:400italic,400);
+*/
 
 body { 
-	font-family: Lora; 
-	padding: 3cm 0 2cm 0;
+	font-family: "Old Standard TT", serif; 
+	padding: 2cm 0 2cm 0;
 	margin: 0 auto;
 	width: 640px;
 	text-align: center;
 	color: #777;
 }
 
-h1 { font-size: 56px; font-weight: 400; letter-spacing: -0.01em; text-align: center; }
-h2 { font-weight: 400; font-size: 48px; padding-bottom: 0; margin-bottom: 0; line-height: 1em; }
+h1 { font-size: 56px; letter-spacing: -0.01em; text-align: center; }
+h2 { font-size: 48px; padding-bottom: 0; margin-bottom: 0; line-height: 1em; }
 h2 + p { margin: 0; }
+h3 { margin: 0; }
+
+h1, h2, h3 { font-family: Vidaloka; font-weight: 400; }
 
 
 footer {
@@ -36,8 +43,6 @@ a:visited {
 }
 
 .silk {
-	font-style: italic;
-	font-weight: 300;
 	font-size: 48px;
 }
 
@@ -45,21 +50,19 @@ a:visited {
 	font-size: 72px;
 	font-family: "Lora";
 	letter-spacing: -0.08em;
-}
-.and {
-	font-size: 56px;
+	line-height: 1em;
 }
 .bruno {
 	font-size: 72px;
 	font-weight: bold;
-	letter-spacing: -0.08em;
+	letter-spacing: -0.02em;
+	line-height: 1em;
 }
 
 .frac64{
-	letter-spacing: -5px;
+	letter-spacing: -2px;
 	font-weight: 700;
 	font-size: 52px;
-	font-family: "Source Sans Pro";
 }
 
 .none{
@@ -67,7 +70,6 @@ a:visited {
 	font-size: 48px;
 	font-weight: bold;
 	letter-spacing: -0.05em;
-	font-family: "Source Code Pro";
 	white-space: nowrap;
 }
 .none small {
@@ -75,20 +77,4 @@ a:visited {
 	text-transform: uppercase;
 	font-weight: normal;
 	letter-spacing: -0.05em;
-	font-family: "Source Code Pro";
-}
-
-.vm {
-	x-background-color: #c3ccd1;
-	x-background-color: #69402e;
-	x-background-image: url(http://www.bruno-lang.com/assets/img/noisy-2.png);
-}
-.vm th {
-	font-weight: normal;
-	letter-spacing: -0.03em;
-	x-color: #fcd937;
-	font-size: 36px;
-}
-.vm td {
-	x-color: #fcd937;
 }
