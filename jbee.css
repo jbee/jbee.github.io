@@ -45,10 +45,8 @@ a:visited {
 .silk {
 	font-size: 48px;
 }
-
 .alma {
 	font-size: 72px;
-	font-family: "Lora";
 	letter-spacing: -0.08em;
 	line-height: 1em;
 }
@@ -58,7 +56,6 @@ a:visited {
 	letter-spacing: -0.02em;
 	line-height: 1em;
 }
-
 .frac64{
 	letter-spacing: -2px;
 	font-weight: 700;
@@ -74,7 +71,6 @@ a:visited {
 }
 .none small {
 	font-size: 32px;
-	text-transform: uppercase;
 	font-weight: normal;
 	letter-spacing: -0.05em;
 }
