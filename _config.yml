@@ -1,4 +1,4 @@
 name: Jan Bernitt
 markdown: kramdown
-highlighter: true
+highlighter: pygments
 
