@@ -11,7 +11,7 @@ title: "Jan Bernitt"
 
 ### <a href="http://frac64.github.io/" class="frac64">FRAC&nbsp;64</a>
 
-### <a href="http://www.silkdi.com/" class="silk">silk</a>
+### <a href="http://jbee.github.io/silk/" class="silk">silk</a>
 
 by
 
