@@ -5,20 +5,20 @@ title: "Jan Bernitt"
 
 # Jan Bernitt
 
-A thritysomething year old software developer currently living in Åseda, Sweden.
+A thirty-something year old software developer from Germany currently living in Åseda, Sweden.
 
-## Projects
+## I Like to Code
 
 * [silk](http://jbee.github.io/silk/) Java dependency injection through code
 * ... (others not documented yet)
 
-## Articles
+## Short Stories
 
-* [Outer Space](game.html)
+* [Outer Space](game.html) Galaxy map generation with basic arithmetic
 
-## More
+## Me on...
 
-* [github](https://github.com/jbee)
-* [stackoverflow](https://stackoverflow.com/users/story/8785454)
+* [github](https://github.com/jbee) (what I do)
+* [stackoverflow](https://stackoverflow.com/users/story/8785454) (more of a CV here)
 * [email](mailto:jaanbernitt+jbee.se@gmail.com)
 
