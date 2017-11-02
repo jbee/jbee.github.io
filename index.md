@@ -3,24 +3,18 @@ layout: default
 title: "Jan Bernitt"
 ---
 
-### <a href="https://github.com/bruno-lang/alma" class="alma">alma</a> 
+## Projects
 
-### <a href="http://www.bruno-lang.com/" class="bruno">bruno</a>
+* [silk](http://jbee.github.io/silk/) Java dependency injection through code
+* ... (others not documented yet)
 
-### <a href="http://non-encoding.github.io/" class="none">non<small>-</small>e<small>ncoding</small></a>
+## Articles
 
-### <a href="http://frac64.github.io/" class="frac64">FRAC&nbsp;64</a>
+* [Outer Space](game.html)
 
-### <a href="http://jbee.github.io/silk/" class="silk">silk</a>
+## Contact
 
-by
-
-# <a href="mailto:jaanbernitt+jbee.se@gmail.com">Jan Bernitt</a>
-
-on <a href="https://github.com/jbee">github</a>
-
-## <a href="janbernitt_cv_en.pdf" title="CV in english" lang="en">CV</a>
-
-(finns också<a href="janbernitt_cv_sv.pdf" title="CV på svenska" lang="sv"> på svenska</a>)
+* [mail](mailto:jaanbernitt+jbee.se@gmail.com)
+* [github](https://github.com/jbee)
 
 
