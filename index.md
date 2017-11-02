@@ -3,7 +3,8 @@ layout: default
 title: "Jan Bernitt"
 ---
 
-## Me
+# Jan Bernitt
+
 A thritysomething year old software developer currently living in Åseda, Sweden.
 
 ## Projects
