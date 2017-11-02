@@ -7,12 +7,12 @@ title: "Jan Bernitt"
 
 A thirty-something year old software developer from Germany currently living in Åseda, Sweden.
 
-## I Like to Code
+## I Code on...
 
 * [silk](http://jbee.github.io/silk/) Java dependency injection through code
 * ... (others not documented yet)
 
-## Short Stories
+## I Write about...
 
 * [Outer Space](game.html) Galaxy map generation with basic arithmetic
 
