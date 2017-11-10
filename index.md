@@ -5,7 +5,9 @@ title: "Jan Bernitt"
 
 # Jan Bernitt's Musings on Software
 
-Common theme: How to not end up in a mess -- or -- less is more, nothing is everything.
+Common theme: How to not end up in a mess -- or -- less is more, nothing is everything. In code, writing and life. 
+What is essential to understand cannot be said, only learned following clues. When I am pointing to the moon, look at it, not my finger.
+
 
 ## Projects
 
