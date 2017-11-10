@@ -14,9 +14,9 @@ title: "Outer Space"
 A short story on solving difficult problems without complicated math.
 
 ## Problem
-I'm working on a little multi-player space game, think [MOO2](https://en.wikipedia.org/wiki/Master_of_Orion_II:_Battle_at_Antares).
+I'm working on a little multi-player [4X](https://en.wikipedia.org/wiki/4X) space game, think [MOO2](https://en.wikipedia.org/wiki/Master_of_Orion_II:_Battle_at_Antares).
 There is a galaxy with stars. 
-Each player (AI or human) starts on a home worlds; each in another solar system.
+Each player (AI or human) starts on a home world; each in another solar system.
 
 For fairness all home worlds should be surrounded by about the same number of
 other stars in about the same average distance. 
@@ -24,10 +24,11 @@ Also the home worlds should be distributed in the galaxy so that the closest
 distance between two of them is as large as we can make it so players get to
 develop before they are confronted with potential enemies.
 
-Also I wanted the galaxy to look "natural". 
-There should be no obvious clusters of stars for each player nicely distributed
-equally in some geometric shape like a circle. Takes fun out of the game. 
+The galaxy should look "natural" and random:
+No arrangement of stars in uniform shapes or groups.
+Takes fun out of the game. 
 
+<big>?</big>
 
 ## Solution
 First the galaxy is divided into a grid of rectangular cells of equal size.
@@ -46,9 +47,10 @@ cells than players. Division, multiplication and rounding get you there.
 </svg>
 
 For each player pick a random cell from remaining set and remove it from that set.
-The cell's rectangular area is filled.
-Therefor pick a random point within the cell. Check that is has at least a
-certain minimum distance to all points (starts in galaxy) picked so far (green).
+
+The picked cell's rectangular area is filled:
+Pick a random point within the cell. Check that is has at least a
+certain minimum distance to all points (stars in galaxy) picked so far (green).
 Otherwise (red) pick another point until the minimum number of stars close to 
 each player is reached for that cell. 
 
@@ -75,8 +77,8 @@ each player is reached for that cell.
 </svg>
 
 The home world is the point of the cell that is closest to the center of the cell (cyan).
-Continue with next cell until all players have a filled cell.
-Some cells will still be empty.
+Pick next cell until there is a filled cell for each player.
+Some might still be empty.
 
 <svg	xmlns="http://www.w3.org/2000/svg"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -125,12 +127,12 @@ Some cells will still be empty.
 
 </svg>
 
-Now add some additional random points/stars within the bounds of the whole 
-galaxy that still have the quality of not being to close to any of the points
+Finally add some additional random points/stars within the bounds of the whole 
+galaxy that still have the quality of not being to close to any of the points/stars
 picked before. 
 
-And we are done. Only math required is basic arithmetic and distance between two
-points in a 2D or 3D plane.
+We are done. Only math required is basic arithmetic and distance between two
+points in a 2D plane.
 
 
 ## Result
@@ -152,6 +154,5 @@ Also the algorithm naturally allows for the kind of parameters we want to have:
 
 How the grid is divided can easily be tweaked to these parameters.
 
-The reason I think this solution is worth a story is the fact that we get very
-good results with very little math. I doubt that a highly mathematical solution
-gets results as good as these and offers all the parameters that we want. 
+While the problem looks for a combination of minima and maxima this
+simple approximation solves it with very little math, code and complexity. 

@@ -20,7 +20,7 @@ footer { padding: 2em 12%; }
 footer a:visited, header a:visited { color: blue; }
 footer a, header a { text-decoration: none; }
 section { padding: 1em 12%; }
-nav { background-color: #bbb; padding: 1em; }
+nav { padding: 1em; }
 nav + nav { background-color: #AAFFEE; }
 b, strong { color: #00CC55; font-weight: normal; }
 h1 { font-size: 20px; margin-top: 3em; }
@@ -41,9 +41,6 @@ blockquote {
 p code, li > code {
 	color: #664400; background-color: #ddd;
 }
-p + p {
-	text-indent: 1em;
-}
 hr {
 	height: 0;
 	border-width: 0;
@@ -53,6 +50,7 @@ hr {
 hr + ol {
 	font-size: 10px; color: #333;
 }
+big { font-size: 100px; color: #FF7777; display: block; text-align: center; padding: 30px 0; }
 /* tags */
 h1 + ul { padding: 0; margin: 2px; }
 h1 + ul li {
@@ -75,7 +73,8 @@ h1 + ul li {
 		<a href="/silk/">silk</a>
 		<br/>
 		writings: 
-		<a href="game.html">Outer Space</a> 
+		<a href="game.html">Outer Space</a> /
+		<a href="names.html">Who Are You?</a>
 		</nav>
 	</header>
 	<section>{{ content }}</section>

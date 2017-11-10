@@ -1,12 +1,12 @@
 ---
 layout: default
-title: "Jan Bernitt"
+title: "Jan's Musings on Software"
 ---
 
-# Jan Bernitt's Musings on Software
+# Jan's Musings on Software
 
 Common theme: How to not end up in a mess -- or -- less is more, nothing is everything. In code, writing and life. 
-What is essential to understand cannot be said, only learned following clues. When I am pointing to the moon, look at it, not my finger.
+What is essential to understand cannot be said, but learned following clues. When I am pointing to the moon, look at it, not my finger.
 
 
 ## Projects
@@ -18,6 +18,7 @@ What is essential to understand cannot be said, only learned following clues. Wh
 ## Writings 
 
 * [Outer Space](game.html): Galaxy map generation with basic arithmetic
+* [Who Are You?](names.html): Name generation with programming basics
 
 
 ## Contact
