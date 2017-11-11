@@ -23,10 +23,4 @@ What is essential to understand cannot be said, but learned following clues. Don
 * [Who Are You?](names.html): Name generation with programming basics
 
 
-## Contact
-
-* [github](https://github.com/jbee): what I do
-* [stackoverflow](https://stackoverflow.com/users/story/8785454): more of a CV here...
-* [email](mailto:jaanbernitt+jbee.se@gmail.com) me
-
 
