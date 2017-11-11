@@ -66,15 +66,23 @@ h1 + ul li {
 <body>
 	<header>
 		<nav>
-		jbee: <a href="/">home</a>
+		jbee: 
+		<a href="/">home</a> /
+		<a href="https://github.com/jbee">github</a>
 		</nav>
 		<nav>
 		projects:
 		<a href="/silk/">silk</a>
 		<br/>
 		writings: 
-		<a href="game.html">Outer Space</a> /
-		<a href="names.html">Who Are You?</a>
+	{% for page in site.pages %}
+	{% if page.categories contains 'writing' %}
+	{% unless forloop.first %}
+	/
+	{% endunless %}
+	 <a href="{{ page.url }}">{{ page.title }}</a>
+	{% endif %}
+	{% endfor %}
 		</nav>
 	</header>
 	<section>{{ content }}</section>

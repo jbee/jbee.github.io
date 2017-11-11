@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Outer Space"
+categories: [writing, spacecrafts]
 ---
 
 # Outer Space

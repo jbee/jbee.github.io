@@ -1,9 +1,10 @@
 ---
 layout: default
-title: "Who Are You?"
+title: "That Alien"
+categories: [writing, spacecrafts]
 ---
 
-# Who Are You?
+# That Alien
 
 * exercise
 * game
@@ -28,7 +29,7 @@ Sounds terribly complicated. Doesn't have to be.
 ## Solution
 For each language we create a list of sets of name fragments.
 Each fragment is one or more letters. 
-Fragments sets or lists are not uniform in any way.
+Fragments, sets and lists are not uniform in any way.
 
 ```
 [ { "a", "be" }, { "ce", "d", "ehf"}, { "t" }, ... ]
@@ -66,7 +67,7 @@ Through the nature of the algorithm the names created
 always have a particular sound and rhythm.
 Different styles can easily be created.
 
-With list of 4-5 fragment sets, each having about 7-8
+With lists of 4-5 fragment sets, each having about 7-8
 members on average and fragments of 1-2 characters 
 there are several thousand names possible.
 
