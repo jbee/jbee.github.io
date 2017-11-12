@@ -83,10 +83,17 @@ Scanning:
 Any other byte is matched literally. Sets can be used
 to match any of the rule symbols literally, like `{~}`.
 
-UTF-8 can be matched literally but not in a set.
-Such a support would be possible but is not added to
-keep the matcher unaware of encoding as this is almost
-never needed in actual languages.
+
+## Encoding
+
+In general the parsing is not (and should not be) aware 
+of encoding. This plays well with some encodings, like
+UTF-8, and badly with others.
+
+UTF-8 literals can be matched by defining the pattern
+in UTF-8 as well. Sets can only allow `<...>` or 
+disallow `{...}` any non ASCII byte what includes or
+excludes any non ASCII UTF-8 symbol. 
 
 
 ## Principles and Properties
@@ -112,6 +119,7 @@ The computational complexity is O(n).
 In worst case n is the longer length (of input or pattern).
 In best case n is the shorter length (of input or pattern).
 No heap memory is needed to process matching. 
+Matching function can be written in < 100 LOC (Java).
 
 
 ## Examples
@@ -153,27 +161,41 @@ Identifiers:
 * `@+[{-_}{a-zA-Z0-9}+]+`: general letters and digits; `foo`, `Foo`, `foo-bar`, `fooBar`, `foo_bar`, `foo1`, `foo2bar`, ...
 * `{$}@<a-zA-Z0-9_>`: php style; `$foo`, `$föö`, `$FOO2`, `$foo_bar`
 
-Instead of defining multiple cases for complex patterns 
-a common pattern must be found. 
-To match for example any java number literal the pattern could be:
+Phone Numbers:
+
+* `[{+}]#+[{ -}#+]+`: local or international; `0150 963852`, `0150-963852`, `+49 12345 698547`, ...
+
+
+## Philosophy
+
+Complex patterns might have multiple cases.
+In such cases a common super-pattern is used that
+potentially matches more but does not conflict with
+other patterns. Full conformity is then checked in 
+later stages of the parsing.
+
+A (simplified) pattern to e.g. match any java number is:
 
 ```
 {.0-9}[{.xb0-9}[{0-9A-Fa-f_}+][.#+]][{dDfFlL}]
 ```
-This would wrongly match just `.` or `..` or `..0.0` or
+It would wrongly match `.` or `..` or `..0.0` or
 hexadecimal numbers with a floating point tail.
-As this still would not accept something as a number
-that is another valid token this is less of a problem.
-The number tokens would need a additional check at a 
+But it does not accept something as a number that is 
+another valid language token.
+The number tokens would need an additional check at a 
 later stage, similar to a overall length check.
 
 A better solution, however, is to design the language
-so that such irregularities do not occur. In case of
+so that such irregularities do not exist. In case of
 java's numbers we could disallow a floating point to 
-start with `.`.
-This limitation is less considered a problem and more a
-help to keep a language regular. 
-In the example we would gain the property of all number
-literals starting with a digit.
+start with `.`, what would give the language the 
+property of all number literals starting with a digit.
 
+Therefore the limitation is less considered a problem 
+and more a guide to keep a language regular.
+
+Also cases are often better handled as different 
+terminal tokens of the language. So in paractice cases
+do occur on a different level making this a non-issue.
 
