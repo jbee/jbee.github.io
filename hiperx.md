@@ -11,10 +11,10 @@ categories: [project, parsing]
 * parsing
 * terminals
 
-To implement a general parser a language designer
-wants to describe patterns for terminals.
+A language designer often describes patterns for 
+terminals for a general parser that outputs a [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
 
-Let us understand a *terminal* as any sequence of 
+Here *terminal* is understood as any sequence of 
 characters that is one atomic thing. 
 A leaf in a parse tree.
 Like identifiers, numbers or string literals. 
