@@ -30,6 +30,9 @@ h2 {
 	padding-top: 2em;
 	display: block;
 }
+ul, ol {
+	padding-left: 2em;
+}
 pre {
 	background-color: #ccc;
 	padding: 2px;
@@ -73,7 +76,12 @@ h1 + ul li {
 		</nav>
 		<nav>
 		projects:
-		<a href="/silk/">silk</a>
+		<a href="/silk/">silk</a> / 
+	{% for page in site.pages %}
+	{% if page.categories contains 'project' %}
+	 <a href="{{ page.url }}">{{ page.title }}</a>
+	{% endif %}
+	{% endfor %}
 		<br/>
 		writings: 
 	{% for page in site.pages %}
