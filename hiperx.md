@@ -22,30 +22,33 @@ Like identifiers, numbers or string literals.
 > Question: Does the input start with a pattern that 
 > makes it a certain terminal and where does it end?
 
-With the goal of implementing the full parser in very
-little code regular expressions are not an option. 
+With the goal of implementing the full general parser 
+in very little code the use of regular expressions is 
+not an option. 
 Besides, they are a complex hard to predict general tool.
-A specific solution can be simpler and predictable for 
-a language designer.
+Specific solution tweaked to the needs can be simpler 
+and more predictable.
 
 
 ## Design
-Goal is the minimal set of features that allows to
+The goal is the minimal set of features that allow to
 define intuitive patterns to match sophisticated 
 terminals.
 
 The algorithm should have a single allocation-free 
-interpreter matching function.
+interpreter matching function to be both simple and
+fast.
 
 Properties that can be tested on identified terminals,
 like a maximum length, are not essential for matching
-and thus require no support.
+and require no support.
 
 
 ## Rules
 Rules are byte instructions designed to give the 
 appearance of syntax, but there is none.
 It is a byte-encoded interpreted language.
+Thou some instructions are no-ops used as markers.
 
 Character sets:
 
@@ -66,22 +69,29 @@ defining further members is exclusive.
 
 Repetition:
 
-* `+`: previous set, group or literal more than once
+* `+`: try previous set, group or literal again
 
 Groups:
 
-* `(abc)`: a group `abc` that must occur
-* `[abc]`: a group `abc` that can occur
+* `(abc)`: a group with sequence `abc` that *must* occur
+* `[abc]`: a group with sequence `abc` that *can* occur
 
-Groups are most useful when nested, like `(a[b(c)+])`.
-The regex `*` can be build using `[abc]+`.
+Groups are most useful when nested and used in 
+combination with `+`, like `(a[b(c)+])`.
+The `*` from regex can be build using `[abc]+`.
 
 Scanning:
 
 * `~`: skip until following set, group or literal matches
 
-Any other byte is matched literally. Sets can be used
-to match any of the rule symbols literally, like `{~}`.
+Clarification: `a~b` matches *`axxxb`*`xxb` (green part). 
+To end the match only on a specific sequence or pattern
+use a group: `a~(bc)` matches *`axxxbxxbc`*`xxbc`.
+
+Any other byte (not *{}()[]<>#@^_$+~*) is matched 
+literally. 
+Sets can be used to match any of the instruction symbols 
+literally, like `{~}`.
 
 
 ## Encoding
@@ -94,6 +104,7 @@ UTF-8 literals can be matched by defining the pattern
 in UTF-8 as well. Sets can only allow `<...>` or 
 disallow `{...}` any non ASCII byte what includes or
 excludes any non ASCII UTF-8 symbol. 
+Most often this is sufficient for lexing.
 
 
 ## Principles and Properties
