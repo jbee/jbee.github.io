@@ -40,8 +40,8 @@ set and concatenate them in list order. Almost done.
 
 To allow for short(er) names add a probability for each
 set that states the chance you pick a fragment from
-that set at all. Yield a random number for each chance
-to see if the set is skipped.
+that set at all. Yield a random chance to see if the 
+set is skipped.
 
 ```
 [ { 90, "a", "be" }, { 75, "ce", "d", "ehf"}, { 50, "t" },... ]
@@ -53,10 +53,10 @@ one is found.
 
 Possible names from the example: `"ace"`, `"bed"`, `"becet"`, `"at"`, ...
 
-The computation is trivial. 
-The work is in picking fragments that **always** can
-be pronounced when concatenated with any of the next 
-possibly picked sets members. 
+The algorithm is trivial. 
+Picking fragments that **always** can be pronounced 
+when concatenated with any of the next possibly picked 
+sets members is the tricky part.
 As we can play with the fragments in our minds easily
 this allows for the fun of a design activity.
 
@@ -65,7 +65,7 @@ this allows for the fun of a design activity.
 
 Through the nature of the algorithm the names created
 always have a particular sound and rhythm.
-Different styles can easily be created.
+Different styles can easily be desigened.
 
 With lists of 4-5 fragment sets, each having about 7-8
 members on average and fragments of 1-2 characters 

@@ -14,7 +14,7 @@ What is essential to understand cannot be said, but learned following clues. Don
 ## Projects
 
 * [silk](http://jbee.github.io/silk/): Java dependency injection through code
-* [HiperX](hiperx.html): simple and fast pattern matching
+* [Linear expressions](lex.html): simple and fast pattern matching
 * ... (more... but it still evolves a lot)
 
 

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: "HiperX"
+title: "Lex"
 categories: [project, parsing]
 ---
 
-# *Hi*gh *per*formance e*X*pressions
+# *L*inear *ex*pressions
 
 * spec
 * pattern matching
@@ -35,13 +35,13 @@ The goal is the minimal set of features that allow to
 define intuitive patterns to match sophisticated 
 terminals.
 
-The algorithm should have a single allocation-free 
-interpreter matching function to be both simple and
-fast.
+The algorithm should have a single state and allocation
+-free interpreter matching function to be both simple 
+and fast. The design is obviously thread-safe.
 
 Properties that can be tested on identified terminals,
-like a maximum length, are not essential for matching
-and require no support.
+like length limitations, are language limitations and
+that can be checked at a later stage.
 
 
 ## Rules
