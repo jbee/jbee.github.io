@@ -2,6 +2,7 @@
 layout: default
 title: "Lex"
 categories: [project, parsing]
+links: { "issues": "https://github.com/jbee/lex/issues", "github": "https://github.com/jbee/lex" }
 ---
 
 # *L*inear *ex*pressions
@@ -130,7 +131,7 @@ The computational complexity is O(n).
 In worst case n is the longer length (of input or pattern).
 In best case n is the shorter length (of input or pattern).
 No heap memory is needed to process matching. 
-Matching function can be written in < 100 LOC (Java).
+Matching function can be written in ~100 LOC (Java).
 
 
 ## Examples
@@ -226,7 +227,7 @@ Scanning through text can be about 5 times faster than
 regualr expressions when using a performance optimisation 
 for `~`. That one comes at the cost of about 40 LOC --
 what is a lot -- considering the whole unoptimized 
-implementation is < 100 LOC.
+implementation is about 100 LOC.
 The fast path only works when `~` is followed by
 literal printable ASCII symbols `~fo+` or a group 
 starting with such a symbol, like `~(fo+)`. 

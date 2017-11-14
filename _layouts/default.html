@@ -22,6 +22,7 @@ footer a, header a, blockquote a { text-decoration: none; }
 section { padding: 1em 12%; }
 nav { padding: 1em; }
 nav + nav { background-color: #65DBEF; }
+nav + nav + nav { background-color: #74D07D; margin-top: 1em; }
 b, strong { color: #3AA241; font-weight: normal; }
 i, em { color: #B766B5; font-style: normal; }
 h1 { font-size: 20px; margin-top: 3em; }
@@ -87,13 +88,19 @@ h1 + ul li {
 		writings: 
 	{% for page in site.pages %}
 	{% if page.categories contains 'writing' %}
-	{% unless forloop.first %}
-	/
-	{% endunless %}
+	{% unless forloop.first %}/{% endunless %}
 	 <a href="{{ page.url }}">{{ page.title }}</a>
 	{% endif %}
 	{% endfor %}
 		</nav>
+		{% if page.links %}
+		<nav>{{ page.title }}:
+			{% for link in page.links %}
+				{% unless forloop.first %}/{% endunless %}
+				<a href="{{ link[1] }}">{{ link[0] }}</a>
+			{% endfor %}
+		</nav>
+		{% endif %}
 	</header>
 	<section>{{ content }}</section>
 	<footer>
