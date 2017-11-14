@@ -20,8 +20,8 @@ characters that is one atomic thing.
 A leaf in a parse tree.
 Like identifiers, numbers or string literals. 
 
-> Question: Does the input start with a pattern that 
-> makes it a certain terminal and where does it end?
+Question: **Does the input start with a pattern that 
+makes it a certain terminal and where does it end?**
 
 With the goal of implementing a full general parser 
 in very little code the use of regular expressions is 
