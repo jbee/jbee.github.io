@@ -51,29 +51,32 @@ appearance of syntax, but there is none.
 It is a byte-encoded interpreted language.
 Thou some instructions are no-ops used as markers.
 
-Character sets:
+Sets
 
 * `{abc}`   a set of bytes `a`,`b` and `c`
 * `{^ac}`  a set of any byte but `a` and `c`
 * `{a-c}`   a set of `a`, `b` and `c` given as a range
 * `}a-c{`   range of `a` to `c` and all non ASCII bytes
+
 * `#`       any ASCII digit (=`{0-9}`)
 * `@`       any ASCII letter (=`{a-zA-Z}`)
 * `_`       any ASCII whitespace character
 * `^`       any byte that is not an ASCII whitespace character
 * `*`       any single byte
-* `$`       any non ASCII byte (`1xxx xxxx`)
+* `!`       any non ASCII byte (`1xxx xxxx`)
+* `$`       ASCII newline (\n or \r)
+
 
 All bytes within a set `{`...`}` are literal.
 Hence, `}` cannot be included in a set explicitly.
 `{^}` matches `^` while any set starting with `^` 
 defining further members is exclusive.
 
-Repetition:
+Repetition
 
 * `+`      try previous set, group or literal again
 
-Groups:
+Groups
 
 * `(abc)`  a group with sequence `abc` that *must* occur
 * `[abc]`  a group with sequence `abc` that *can* occur
@@ -82,7 +85,7 @@ Groups are most useful when nested and used in
 combination with `+`, like `(a[b(c)+])`.
 A regex `*` can be build using `[x]+`.
 
-Scanning:
+Scanning
 
 * `~`      skip until following set, group or literal matches
 
@@ -90,7 +93,7 @@ Clarification: `a~b` matches *`axxxb`*`xxb` (green part).
 To end the match only on a specific sequence or pattern
 use a group: `a~(bc)` matches *`axxxbxxbc`*`xxbc`.
 
-Any other byte (not *{}()[]#@^_$+~*) is matched 
+Any other byte (not <em>{}()[]#@^_$+~!*</em>) is matched 
 literally. 
 Sets can be used to match any of the instruction symbols 
 literally, like `{~}`.
