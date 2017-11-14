@@ -13,7 +13,7 @@ links: { "issues": "https://github.com/jbee/lex/issues", "github": "https://gith
 * terminals
 
 A language designer often describes patterns for 
-terminals for a general parser that outputs a [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
+terminals for a general parser that outputs an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
 
 Here *terminal* is understood as any sequence of 
 characters that is one atomic thing. 
@@ -53,15 +53,15 @@ Thou some instructions are no-ops used as markers.
 
 Character sets:
 
-* `{abc}`: a set of bytes `a`,`b` and `c`
-* `{^abc}`: a set of any byte but `a`,`b` and `c`
-* `{a-c}`: a set of `a`, `b` and `c` given as a range
-* `}a-c{`: range of `a` to `c` and all non ASCII bytes
-* `#` = `{0-9}`: a ASCII digit
-* `@` = `{a-zA-Z}`: a ASCII letter
-* `^`: any byte that is not a ASCII whitespace character
-* `_`: any single byte
-* `$`: any non ASCII byte (`1xxx xxxx`)
+* `{abc}`   a set of bytes `a`,`b` and `c`
+* `{^ac}`  a set of any byte but `a` and `c`
+* `{a-c}`   a set of `a`, `b` and `c` given as a range
+* `}a-c{`   range of `a` to `c` and all non ASCII bytes
+* `#`       a ASCII digit (=`{0-9}`)
+* `@`       a ASCII letter (=`{a-zA-Z}`)
+* `^`       any byte that is not a ASCII whitespace character
+* `_`       any single byte
+* `$`       any non ASCII byte (`1xxx xxxx`)
 
 All bytes within a set `{`...`}` are literal.
 Hence, `}` cannot be included in a set explicitly.
@@ -70,12 +70,12 @@ defining further members is exclusive.
 
 Repetition:
 
-* `+`: try previous set, group or literal again
+* `+`      try previous set, group or literal again
 
 Groups:
 
-* `(abc)`: a group with sequence `abc` that *must* occur
-* `[abc]`: a group with sequence `abc` that *can* occur
+* `(abc)`  a group with sequence `abc` that *must* occur
+* `[abc]`  a group with sequence `abc` that *can* occur
 
 Groups are most useful when nested and used in 
 combination with `+`, like `(a[b(c)+])`.
@@ -83,7 +83,7 @@ The `*` from regex can be build using `[abc]+`.
 
 Scanning:
 
-* `~`: skip until following set, group or literal matches
+* `~`      skip until following set, group or literal matches
 
 Clarification: `a~b` matches *`axxxb`*`xxb` (green part). 
 To end the match only on a specific sequence or pattern
