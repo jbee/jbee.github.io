@@ -55,7 +55,7 @@ Character sets:
 * `{abc}`: a set of bytes `a`,`b` and `c`
 * `{^abc}`: a set of any byte but `a`,`b` and `c`
 * `{a-c}`: a set of `a`, `b` and `c` given as a range
-* `<a-c>`: range of `a` to `c` and all non ASCII bytes
+* `}a-c{`: range of `a` to `c` and all non ASCII bytes
 * `#` = `{0-9}`: a ASCII digit
 * `@` = `{a-zA-Z}`: a ASCII letter
 * `^`: any byte that is not a ASCII whitespace character
@@ -88,7 +88,7 @@ Clarification: `a~b` matches *`axxxb`*`xxb` (green part).
 To end the match only on a specific sequence or pattern
 use a group: `a~(bc)` matches *`axxxbxxbc`*`xxbc`.
 
-Any other byte (not *{}()[]<>#@^_$+~*) is matched 
+Any other byte (not *{}()[]#@^_$+~*) is matched 
 literally. 
 Sets can be used to match any of the instruction symbols 
 literally, like `{~}`.
