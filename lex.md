@@ -210,3 +210,28 @@ Also cases are often better handled as different
 terminal tokens of the language. So in paractice cases
 do occur on a different level making this a non-issue.
 
+
+## Performance
+In a very much non-systematic measurement using [JMH](http://openjdk.java.net/projects/code-tools/jmh/)
+the performance is on par with regular expressions in
+most cases. 
+
+The compiling phase needed for regular expressions was
+not included in the time measured in the assumption 
+that this cost usually is only payed once. 
+If this cost would be included Lex is most likely
+faster as it has no such cost.
+
+Scanning through text can be about 5 times faster than 
+regualr expressions when using a performance optimisation 
+for `~`. That one comes at the cost of about 40 LOC --
+what is a lot -- considering the whole unoptimized 
+implementation is < 100 LOC.
+The fast path only works when `~` is followed by
+literal printable ASCII symbols `~fo+` or a group 
+starting with such a symbol, like `~(fo+)`. 
+Deeper nesting would also work, like `~((fo+)bar)`.
+The speed gain is proportinal to the length of the 
+literal sequence. A longer sequence is found faster.
+Theoretically it can be extended to also work with sets
+but that is another 40 LOC or so.
