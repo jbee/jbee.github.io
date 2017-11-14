@@ -57,10 +57,11 @@ Character sets:
 * `{^ac}`  a set of any byte but `a` and `c`
 * `{a-c}`   a set of `a`, `b` and `c` given as a range
 * `}a-c{`   range of `a` to `c` and all non ASCII bytes
-* `#`       a ASCII digit (=`{0-9}`)
-* `@`       a ASCII letter (=`{a-zA-Z}`)
-* `^`       any byte that is not a ASCII whitespace character
-* `_`       any single byte
+* `#`       any ASCII digit (=`{0-9}`)
+* `@`       any ASCII letter (=`{a-zA-Z}`)
+* `_`       any ASCII whitespace character
+* `^`       any byte that is not an ASCII whitespace character
+* `*`       any single byte
 * `$`       any non ASCII byte (`1xxx xxxx`)
 
 All bytes within a set `{`...`}` are literal.
@@ -79,7 +80,7 @@ Groups:
 
 Groups are most useful when nested and used in 
 combination with `+`, like `(a[b(c)+])`.
-The `*` from regex can be build using `[abc]+`.
+A regex `*` can be build using `[x]+`.
 
 Scanning:
 
@@ -201,7 +202,7 @@ later stage, similar to a overall length check.
 A better solution, however, is to design the language
 so that such irregularities do not exist. In case of
 java's numbers we could disallow a floating point to 
-start with `.`, what would give the language the 
+start with a bare `.`, what would give the language the 
 property of all number literals starting with a digit.
 
 Therefore the limitation is less considered a problem 
