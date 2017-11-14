@@ -23,26 +23,26 @@ Like identifiers, numbers or string literals.
 > Question: Does the input start with a pattern that 
 > makes it a certain terminal and where does it end?
 
-With the goal of implementing the full general parser 
+With the goal of implementing a full general parser 
 in very little code the use of regular expressions is 
 not an option. 
 Besides, they are a complex hard to predict general tool.
-Specific solution tweaked to the needs can be simpler 
+A specific solution tweaked to the needs can be simpler 
 and more predictable.
 
 
 ## Design
-The goal is the minimal set of features that allow to
-define intuitive patterns to match sophisticated 
+The goal is a minimal set of features that allow to
+define intuitive patterns to match quite sophisticated 
 terminals.
 
-The algorithm should have a single state and allocation
--free interpreter matching function to be both simple 
-and fast. The design is obviously thread-safe.
+The algorithm should have a single interpreter matching 
+function that is state- and allocation-free to be both 
+simple and fast. The design is obviously thread-safe.
 
 Properties that can be tested on identified terminals,
-like length limitations, are language limitations and
-that can be checked at a later stage.
+like length limitations, are language specific 
+limitations and that can be checked at a later stage.
 
 
 ## Rules
@@ -102,7 +102,7 @@ of encoding. This plays well with some encodings, like
 UTF-8, and badly with others.
 
 UTF-8 literals can be matched by defining the pattern
-in UTF-8 as well. Sets can only allow `<...>` or 
+in UTF-8 as well. Sets can only allow `}...{` or  
 disallow `{...}` any non ASCII byte what includes or
 excludes any non ASCII UTF-8 symbol. 
 Most often this is sufficient for lexing.
@@ -131,28 +131,28 @@ The computational complexity is O(n).
 In worst case n is the longer length (of input or pattern).
 In best case n is the shorter length (of input or pattern).
 No heap memory is needed to process matching. 
-Matching function can be written in ~100 LOC (Java).
+A matching function can be written in about 
+[100 LOC](https://github.com/jbee/lex/blob/master/java/se/jbee/lex/Lex.java).
 
 
 ## Examples
-Following gives examples of a pattern an the inputs it
-matches.
+Examples of a pattern an the inputs they match:
 
-Dates: 
+Dates
 
 * `####/##/##`: *yyyy/mm/dd*
 * `##[##]/##/##`: *yy/mm/dd* or *yyyy/mm/dd*
 * `##{/-.}##{/-.}##`: *dd/mm/yy*, *dd-mm-yy* or *dd.mm.yy*
 * `#[#]/#[#]/##[##]`: *d/m/yy*, *dd/mm/yy*, *d/m/yyyy* or *dd/mm/yyyy*
 
-Times:
+Times
 
 * `##:##`: *hh:mm*
 * `##:##[:##]` : *hh:mm* or *hh:mm:ss*
 * `##:##:##[.###]`: *hh:mm:ss* or *hh:mm:ss.SSS* (ms)
 * `##[:##][:##].###`: *hh:mm:ss.SSS*, *mm:ss.SSS* or *ss.SSS*
 
-Numbers:
+Numbers
 
 * `#+`: simple integers; `1`, `42`, `345`, ...
 * `#+[,###]+`: with dividers; `42`, `42,000`, `42,000,000`, ...
@@ -161,19 +161,19 @@ Numbers:
 * `0b{01}+[_+{01}+]+`: java binary literal; `0b0000_1010`, ...
 * `0x{0-9A-Fa-f}+[_+{0-9A-Fa-f}+]+`: java hex literals; `0xCAFE_BABE`, ...
 
-Strings:
+Strings
 
 * `"{^"}+"`: quoted string (no escaping); `"foo"`, `"1"`, ...
 * `"~"`: quoted string (no escaping); `"foo"`, `"1"`, ...
 * `"~({^\}")`: quoted string (escaping); `"foo"`, `"foo\"bar"`, ... 
 * `"""~("""")`: triple quoted string; `"""foo"""`, `"""foo"bar"baz"""`, ...
 
-Identifiers:
+Identifiers
 
 * `@+[{-_}{a-zA-Z0-9}+]+`: general letters and digits; `foo`, `Foo`, `foo-bar`, `fooBar`, `foo_bar`, `foo1`, `foo2bar`, ...
-* `{$}@<a-zA-Z0-9_>`: php style; `$foo`, `$föö`, `$FOO2`, `$foo_bar`
+* `{$}@}a-zA-Z0-9_{`: php style; `$foo`, `$föö`, `$FOO2`, `$foo_bar`
 
-Phone Numbers:
+Phone Numbers
 
 * `[{+}]#+[{ -}#+]+`: local or international; `0150 963852`, `0150-963852`, `+49 12345 698547`, ...
 
@@ -208,12 +208,13 @@ Therefore the limitation is less considered a problem
 and more a guide to keep a language regular.
 
 Also cases are often better handled as different 
-terminal tokens of the language. So in paractice cases
+terminal tokens of the language. So in practice cases
 do occur on a different level making this a non-issue.
 
 
 ## Performance
-In a very much non-systematic measurement using [JMH](http://openjdk.java.net/projects/code-tools/jmh/)
+In a very much non-systematic [measurement](https://github.com/jbee/lex/blob/master/java/se/jbee/lex/TestLexPerf.java) using 
+[JMH](http://openjdk.java.net/projects/code-tools/jmh/)
 the performance is on par with regular expressions in
 most cases. 
 
@@ -224,15 +225,15 @@ If this cost would be included Lex is most likely
 faster as it has no such cost.
 
 Scanning through text can be about 5 times faster than 
-regualr expressions when using a performance optimisation 
-for `~`. That one comes at the cost of about 40 LOC --
+regular expressions when using a performance optimisation 
+for `~`. That one comes at the cost of about [40 LOC](https://github.com/jbee/lex/blob/master/java/se/jbee/lex/Lex.java#L173-L221) --
 what is a lot -- considering the whole unoptimized 
 implementation is about 100 LOC.
 The fast path only works when `~` is followed by
 literal printable ASCII symbols `~fo+` or a group 
 starting with such a symbol, like `~(fo+)`. 
 Deeper nesting would also work, like `~((fo+)bar)`.
-The speed gain is proportinal to the length of the 
+The speed gain is proportional to the length of the 
 literal sequence. A longer sequence is found faster.
 Theoretically it can be extended to also work with sets
 but that is another 40 LOC or so.
