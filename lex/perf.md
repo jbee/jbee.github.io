@@ -27,7 +27,7 @@ Long explanations can be found elsewhere. Or ask me.
 ```java
 letter & 0xDF
 ```
-It allows to compare for both ranges with one check.
+Gain: compare both ranges with one check.
 
 
 ## Use subtraction to check a range
@@ -40,14 +40,12 @@ The idea is: `unsignedOf(x-lower) <= upper-lower`.
 ```
 Here `0xFFFF &` has the effect of a `unsignedOf`.
 `upper-lower` was precomputed to 9.
-Makes two checks into one.
+Gain: two checks as one.
 
 
 ## Use `long` to return two `int`s
 Java doesn't allow multiple return values. 
 Options are a `int[]` or creating a class. 
-Both cause heap allocation. 
-Use a `long` to avoid it:
 
 ```java
 static long ab(int a, int b) {
@@ -56,6 +54,7 @@ static long ab(int a, int b) {
 a = (int)(ab >> 32);
 b = (int) ab;
 ```
+Gain: no heap allocation.
 
 
 ## Use a `long` as a printable ASCII bitmask
@@ -70,6 +69,8 @@ private static long bit(byte b) {
 	return 1L << ((b > 95 ? (b & 0xDF) : b) -32);
 }
 ```
+Gain: heap free fast bitmask for ASCII.
+
 This obviously is no exact equivalent but helpful for
 a coarse first check. On a match do a exact check.
 I might have invented this one. Who knows.
@@ -82,6 +83,9 @@ Because not all bytes have to be inspected.
 When searching for *Hello* only every 5th byte has to 
 be checked to see if it is one of 4 letters: H, e, l ,o.
 A bitmask like described above can be used to do that.
+
 On a match, find the start and check for a exact match.
 Otherwise continue jumping forward in steps of the
 length of the search term.
+
+Gain: n times speedup for text seach (n term length).
