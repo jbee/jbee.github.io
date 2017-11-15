@@ -232,11 +232,16 @@ regular expressions when using a [performance optimisation](perf.html)
 for `~`. That one comes at the cost of about [40 LOC](https://github.com/jbee/lex/blob/master/java/se/jbee/lex/Lex.java#L173-L221) --
 what is a lot -- considering the whole unoptimized 
 implementation is about 100 LOC.
+
 The fast path only works when `~` is followed by
 literal printable ASCII symbols `~fo+` or a group 
 starting with such a symbol, like `~(fo+)`. 
-Deeper nesting would also work, like `~((fo+)bar)`.
+Deeper nesting would also work, like `~((fo+)bar)` or
+even `~(foo~(bar))`.
 The speed gain is proportional to the length of the 
 literal sequence. A longer sequence is found faster.
 Theoretically it can be extended to also work with sets
 but that is another 40 LOC or so.
+Rough number: a 20 MB text file can be searched in about 100ms.
+No [grep](https://www.gnu.org/software/grep/) but pretty good for a small tool.
+
