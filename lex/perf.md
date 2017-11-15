@@ -58,11 +58,10 @@ Gain: no heap allocation.
 
 
 ## Use `long` as bitmask for printable ASCII
-A fast way to check if a byte symbol is one of a certain
-set of ASCII symbols is a bitmask. 
-Printable ASCII range is 32-127. A `long` has 64 bits.
-To make this fit the upper-case trick from above is
-used to fold 96-127 on 64-95. 32-95 is mapped onto 0-64.
+Printable ASCII range is 32-127.
+To make this fit `long`'s 64 bit the upper-case trick 
+from above is used to fold 96-127 on 64-95. 
+Finally 32-95 is mapped to 0-64.
 
 ```java
 private static long bit(byte b) {
@@ -71,9 +70,8 @@ private static long bit(byte b) {
 ```
 Gain: heap free fast bitmask for ASCII.
 
-This obviously is no exact equivalent but helpful for
-a coarse first check. On a match do a exact check.
-I might have invented this one. Who knows.
+Helpful for a coarse first check. On a match do a exact check.
+I might have discovered the folding. Who knows.
 
 
 ## Hop to find a byte sequence
@@ -82,10 +80,10 @@ sequence of bytes is easier to find.
 Because not all bytes have to be inspected.
 When searching for *Hello* only every 5th byte has to 
 be checked to see if it is one of 4 letters: H, e, l ,o.
-A bitmask like described above can be used to do that.
+A bitmask (described above) can be used to do that.
 
 On a match, find the start and check for a exact match.
-Otherwise continue jumping forward in steps of the
-length of the search term.
+Otherwise continue hopping forward in steps of the
+length of the fix search term.
 
 Gain: n times speedup for text seach (n term length).

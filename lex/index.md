@@ -128,12 +128,14 @@ The worst cases are scanning `~` and optional groups `[...]`
 that try to match and otherwise recover by making progress
 in either the input (`~`) or the pattern (`[...]`).
 In all other cases progress is always made in both.
-Almost always mismatches are identified immediately.
+Conseqeuntly mismatches are most often identified immediately.
 
-The computational complexity is O(n). 
+The computational complexity is never worse than O(n). 
 In worst case n is the longer length (of input or pattern).
 In best case n is the shorter length (of input or pattern).
-No heap memory is needed to process matching. 
+Hence the name linear expressions.
+
+No heap memory is needed to process matching.
 A matching function can be written in about 
 [100 LOC](https://github.com/jbee/lex/blob/master/java/se/jbee/lex/Lex.java).
 
