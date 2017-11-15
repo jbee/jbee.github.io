@@ -43,9 +43,9 @@ Here `0xFFFF &` has the effect of a `unsignedOf`.
 Gain: two checks as one.
 
 
-## Use `long` to return two `int`s
+## Use `long` as `int` pair
 Java doesn't allow multiple return values. 
-Options are a `int[]` or creating a class. 
+Options are a `int[]`, a class or using long:
 
 ```java
 static long ab(int a, int b) {
@@ -57,7 +57,7 @@ b = (int) ab;
 Gain: no heap allocation.
 
 
-## Use a `long` as a printable ASCII bitmask
+## Use `long` as bitmask for printable ASCII
 A fast way to check if a byte symbol is one of a certain
 set of ASCII symbols is a bitmask. 
 Printable ASCII range is 32-127. A `long` has 64 bits.
@@ -76,7 +76,7 @@ a coarse first check. On a match do a exact check.
 I might have invented this one. Who knows.
 
 
-## Skip bytes to find a byte sequence
+## Hop to find a byte sequence
 At first it might be counter intuitive that a longer 
 sequence of bytes is easier to find. 
 Because not all bytes have to be inspected.
