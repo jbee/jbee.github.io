@@ -32,17 +32,16 @@ and more predictable.
 
 
 ## Design
-The goal is a minimal set of features that allow to
-define intuitive patterns to match quite sophisticated 
-terminals.
+Goal: a minimal set of features that allow to define 
+intuitive patterns to match quite complex terminals.
 
-The algorithm should have a single interpreter matching 
-function that is state- and allocation-free to be both 
-simple and fast. The design is obviously thread-safe.
+A thread-safe interpreter matching function that is 
+allocation-free and has no global state.
+The function is embeddable into a general parser.
 
-Properties that can be tested on identified terminals,
-like length limitations, are language specific 
-limitations and that can be checked at a later stage.
+The matching does not care about language level 
+constraints, like a length limitation. These can be
+checked at a later compilation stage.
 
 
 ## Rules
@@ -54,7 +53,7 @@ Thou some instructions are no-ops used as markers.
 Sets
 
 * `{abc}`   a set of bytes `a`,`b` and `c`
-* `{^ac}`  a set of any byte but `a` and `c`
+* `{^ac}`   a set of any byte but `a` and `c`
 * `{a-c}`   a set of `a`, `b` and `c` given as a range
 * `}a-c{`   range of `a` to `c` and all non ASCII bytes
 * `#`       any ASCII digit (=`{0-9}`)
@@ -67,9 +66,9 @@ Sets
 
 
 All bytes within a set `{`...`}` are literal.
-Hence, `}` cannot be included in a set explicitly.
+Hence, `}`/`{` cannot be included in a set explicitly.
 `{^}` matches `^` while any set starting with `^` 
-defining further members is exclusive.
+defining further members is excludes these members.
 
 Repetition
 
@@ -100,7 +99,7 @@ literally, like `{~}`.
 
 ## Encoding
 
-In general the parsing is not (and should not be) aware 
+In general the matching is not (and should not be) aware 
 of encoding. This plays well with some encodings, like
 UTF-8, and badly with others.
 
@@ -128,12 +127,12 @@ The worst cases are scanning `~` and optional groups `[...]`
 that try to match and otherwise recover by making progress
 in either the input (`~`) or the pattern (`[...]`).
 In all other cases progress is always made in both.
-Conseqeuntly mismatches are most often identified immediately.
+Consequently mismatches are most often identified immediately.
 
 The computational complexity is never worse than O(n). 
 In worst case n is the longer length (of input or pattern).
 In best case n is the shorter length (of input or pattern).
-Hence the name linear expressions.
+Whence the name *linear expressions*.
 
 No heap memory is needed to process matching.
 A matching function can be written in about 
