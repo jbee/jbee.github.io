@@ -11,7 +11,7 @@ categories: [writing, detail, performance]
 * optimisation
 * low-level
 
-A very brief overview of optimisations than are (or can
+A very brief overview of optimisations that are (or can
 be) used to optimize `int` or `byte` based computations 
 like those done by [Lex](index.html).
 
