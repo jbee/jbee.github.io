@@ -1,9 +1,11 @@
 ---
 layout: default
-title: "Jan's Musings on Software"
+title: "Programming Wonderland"
 ---
 
-# Jan's Musings on Software
+# Programming Wonderland
+
+I wonder... a lot...
 
 Common theme: How to not end up in a mess -- or -- less is more, nothing is everything. In code, writing and life. 
 What is essential to understand cannot be said, but learned following clues. Don't look at my finger when I'm pointing to the moon.
@@ -20,8 +22,12 @@ What is essential to understand cannot be said, but learned following clues. Don
 
 ## Writings 
 
-* [Outer Space](game.html): Galaxy map generation with basic arithmetic
-* [Who Are You?](names.html): Name generation with programming basics
+<ul>
+{% for page in site.pages %}
+{% if page.categories contains 'writing' %}<li><a href="{{ page.url }}">{{ page.title }}</a>: {{page.summary}}</li>{% endif %}
+{% endfor %}
+</ul>
+
 
 
 

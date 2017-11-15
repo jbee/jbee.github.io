@@ -57,7 +57,6 @@ Sets
 * `{^ac}`  a set of any byte but `a` and `c`
 * `{a-c}`   a set of `a`, `b` and `c` given as a range
 * `}a-c{`   range of `a` to `c` and all non ASCII bytes
-
 * `#`       any ASCII digit (=`{0-9}`)
 * `@`       any ASCII letter (=`{a-zA-Z}`)
 * `_`       any ASCII whitespace character
@@ -229,7 +228,7 @@ If this cost would be included Lex is most likely
 faster as it has no such cost.
 
 Scanning through text can be about 5 times faster than 
-regular expressions when using a performance optimisation 
+regular expressions when using a [performance optimisation](perf.html)
 for `~`. That one comes at the cost of about [40 LOC](https://github.com/jbee/lex/blob/master/java/se/jbee/lex/Lex.java#L173-L221) --
 what is a lot -- considering the whole unoptimized 
 implementation is about 100 LOC.

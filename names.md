@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "That Alien"
+summary: "Name generation with programming basics"
 categories: [writing, spacecrafts]
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Outer Space"
+summary: "Galaxy map generation with basic arithmetic"
 categories: [writing, spacecrafts]
 ---
 
