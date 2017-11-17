@@ -5,7 +5,7 @@ summary: "byte level performance tricks"
 categories: [writing, detail, performance]
 ---
 
-# `byte` Golf
+# Byte Golf
 
 * performance
 * optimisation

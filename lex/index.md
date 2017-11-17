@@ -1,11 +1,12 @@
 ---
 layout: default
 title: "Lex"
+summary: "simple and fast pattern matching"
 categories: [project, parsing]
 links: { "issues": "https://github.com/jbee/lex/issues", "github": "https://github.com/jbee/lex" }
 ---
 
-# *L*inear *ex*pressions
+# `L`inear `ex`pressions
 
 * spec
 * pattern matching
@@ -20,8 +21,8 @@ characters that is one atomic thing.
 A leaf in a parse tree.
 Like identifiers, numbers or string literals. 
 
-Question: **Does the input start with a pattern that 
-makes it a certain terminal and where does it end?**
+**Question:** *Does the input start with a pattern that 
+makes it a certain terminal and where does it end?*
 
 With the goal of implementing a full general parser 
 in very little code the use of regular expressions is 
@@ -87,7 +88,7 @@ Scanning
 
 * `~`      skip until following set, group or literal matches
 
-Clarification: `a~b` matches *`axxxb`*`xxb` (green part). 
+Clarification: `a~b` matches *`axxxb`*`xxb` (darker part). 
 To end the match only on a specific sequence or pattern
 use a group: `a~(bc)` matches *`axxxbxxbc`*`xxbc`.
 

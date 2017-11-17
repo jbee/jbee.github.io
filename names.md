@@ -79,7 +79,7 @@ already there.
 
 Some examples of different languages I use:
 
-1. Topo, Guttigio, Gupo, Luida, Vallerio, Bopo, Pello, Datti, Fulle, Da, Bullirio, Vatti, Luittivino, Gulligio, Pelli, Tollegrino, Luipo, Lui, Luillorio, Vatticesco, Cocollorio, Botti, Bugi, Luigigio, Totti, ...
-2. Vedok, Ote, Kedukon, Thuvebal, Nenor, Rode, Raro, Rate, Hava, Tatak, Racu, Tato, Kotukon, Thuca, Keceros, Kene, Ador, Yodubal, Rocod, Nerubal, Vede, Neru, Averos, Ogu, Bavebal, Oto, Keta, Vedo, Tadud, Otu, Alo, Nevar, One, Kovokon, Ovak, Kore, ...
-3. Stinkon, Euchin, Lorber, Stinbe, Benker, Stiuser, Hamd, March, Zardend, Gersin, Gemchon, Maud, Samchen, Ers, Emcher, Bench, Stimchenia, Zarsen, Gemg, Haub, Sand, Margong, Zandon, Zank, Manb, Hankond, Stirb, Mamson, Mark, Lomb, Stinsin, Sambe, Berg, Maus, Lorb, End, Zaug, Stirs,...
+1. *Topo, Guttigio, Gupo, Luida, Vallerio, Bopo, Pello, Datti, Fulle, Da, Bullirio, Vatti, Luittivino, Gulligio, Pelli, Tollegrino, Luipo, Lui, Luillorio, Vatticesco, Cocollorio, Botti, Bugi, Luigigio, Totti, ...*
+2. *Vedok, Ote, Kedukon, Thuvebal, Nenor, Rode, Raro, Rate, Hava, Tatak, Racu, Tato, Kotukon, Thuca, Keceros, Kene, Ador, Yodubal, Rocod, Nerubal, Vede, Neru, Averos, Ogu, Bavebal, Oto, Keta, Vedo, Tadud, Otu, Alo, Nevar, One, Kovokon, Ovak, Kore, ...*
+3. *Stinkon, Euchin, Lorber, Stinbe, Benker, Stiuser, Hamd, March, Zardend, Gersin, Gemchon, Maud, Samchen, Ers, Emcher, Bench, Stimchenia, Zarsen, Gemg, Haub, Sand, Margong, Zandon, Zank, Manb, Hankond, Stirb, Mamson, Mark, Lomb, Stinsin, Sambe, Berg, Maus, Lorb, End, Zaug, Stirs,...*
 
