@@ -41,8 +41,8 @@ allocation-free and has no global state.
 The function is embeddable into a general parser.
 
 The matching does not care about language level 
-constraints, like a length limitation. These can be
-checked at a later compilation stage.
+constraints, like a exact length limitation. 
+These can be checked at a later compilation stage.
 
 
 ## Rules
@@ -77,7 +77,7 @@ Repetition
 
 Groups
 
-* `(abc)`  a group with sequence `abc` that *must* occur
+* `(abc)`  a group where the sequence `abc` *must* occur
 * `[abc]`  a group with sequence `abc` that *can* occur
 
 Groups are most useful when nested and used in 
@@ -92,7 +92,7 @@ Clarification: `a~b` matches *`axxxb`*`xxb` (darker part).
 To end the match only on a specific sequence or pattern
 use a group: `a~(bc)` matches *`axxxbxxbc`*`xxbc`.
 
-Any other byte (not <em>{}()[]#@^_$+~!*</em>) is matched 
+Any other byte (not `{}()[]#@^_$+~!*`) is matched 
 literally. 
 Sets can be used to match any of the instruction symbols 
 literally, like `{~}`.
@@ -113,10 +113,11 @@ Most often this is sufficient for lexing.
 
 ## Principles and Properties
 
-* a match is always sufficient 
+* match proceeds left to right
+* a (so far) match is always sufficient 
+* there is no backtracking
 * `+` is always greedy (stops on first mismatch)
 * `~` is always non-greedy (stops on first match)
-* there is no backtracking
 * sets are limited to ASCII (a single byte)
 
 Consequently the parser must make progress either in
