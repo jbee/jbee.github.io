@@ -21,7 +21,7 @@ They work for most languages. Here given for Java.
 Long explanations can be found elsewhere. Or ask me.
 
 
-## Use `&` to upper case ASCII letters
+## Use bitwise AND to upper case ASCII letters
 `a`-`z` can be turned into `A` to `Z` by:
 
 ```java
@@ -43,7 +43,7 @@ Here `0xFFFF &` has the effect of a `unsignedOf`.
 Gain: two checks as one.
 
 
-## Use `long` as `int` pair
+## Use long as int pair
 Java doesn't allow multiple return values. 
 Options are a `int[]`, a class or using long:
 
@@ -57,7 +57,7 @@ b = (int) ab;
 Gain: no heap allocation.
 
 
-## Use `long` as bitmask for printable ASCII
+## Use long as bitmask for printable ASCII
 Printable ASCII range is 32-127.
 To make this fit `long`'s 64 bit the upper-case trick 
 from above is used to fold 96-127 on 64-95. 

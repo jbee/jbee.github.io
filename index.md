@@ -13,18 +13,18 @@ What is essential to understand cannot be said, but learned following clues. Don
 
 ## Projects
 
-* [silk](http://jbee.github.io/silk/): Java dependency injection through code
-* [Linear expressions](lex/): simple and fast pattern matching
-* ... (more... but it still evolves a lot)
-
+<dl>
+<dt><a href="silk/">silk</a></dt><dd>Java dependency injection through code</dd>
+<dt><a href="lex/">Linear expressions</a></dt><dd>simple and fast pattern matching</dd>
+</dl>
 
 ## Writings 
 
-<ul>
+<dl>
 {% for page in site.pages %}
-{% if page.categories contains 'writing' %}<li><a href="{{ page.url }}">{{ page.title }}</a>: {{page.summary}}</li>{% endif %}
+{% if page.categories contains 'writing' %}<dt><a href="{{ page.url }}">{{ page.title }}</a></dt><dd>{{page.summary}}</dd>{% endif %}
 {% endfor %}
-</ul>
+</dl>
 
 
 

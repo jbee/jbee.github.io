@@ -6,16 +6,14 @@ categories: [project, parsing]
 links: { "issues": "https://github.com/jbee/lex/issues", "github": "https://github.com/jbee/lex" }
 ---
 
-# `L`inear `ex`pressions
+# Linear EXpressions
 
 * spec
 * pattern matching
 * parsing
 * terminals
 
-A language designer often describes patterns for 
-terminals for a general parser that outputs an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
-
+A way to define patterns for terminals in an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
 Here *terminal* is understood as any sequence of 
 characters that is one atomic thing. 
 A leaf in a parse tree.
@@ -51,7 +49,7 @@ appearance of syntax, but there is none.
 It is a byte-encoded interpreted language.
 Thou some instructions are no-ops used as markers.
 
-Sets
+**Sets**
 
 * `{abc}`   a set of bytes `a`,`b` and `c`
 * `{^ac}`   a set of any byte but `a` and `c`
@@ -71,11 +69,11 @@ Hence, `}`/`{` cannot be included in a set explicitly.
 `{^}` matches `^` while any set starting with `^` 
 defining further members is excludes these members.
 
-Repetition
+**Repetition**
 
 * `+`      try previous set, group or literal again
 
-Groups
+**Groups**
 
 * `(abc)`  a group where the sequence `abc` *must* occur
 * `[abc]`  a group with sequence `abc` that *can* occur
@@ -84,7 +82,7 @@ Groups are most useful when nested and used in
 combination with `+`, like `(a[b(c)+])`.
 A regex `*` can be build using `[x]+`.
 
-Scanning
+**Scanning**
 
 * `~`      skip until following set, group or literal matches
 
