@@ -14,8 +14,9 @@ What is essential to understand cannot be said, but learned following clues. Don
 ## Projects
 
 <dl>
-<dt><a href="silk/">silk</a></dt><dd>Java dependency injection through code</dd>
-<dt><a href="lex/">Linear expressions</a></dt><dd>simple and fast pattern matching</dd>
+{% for page in site.pages %}
+{% if page.categories contains 'project' %}<dt><a href="{{ page.url }}">{{ page.title }}</a></dt><dd>{{page.summary}}</dd>{% endif %}
+{% endfor %}
 </dl>
 
 ## Writings 

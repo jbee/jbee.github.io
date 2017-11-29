@@ -4,6 +4,8 @@ title: "Lex"
 summary: "simple and fast pattern matching"
 categories: [project, parsing]
 links: { "issues": "https://github.com/jbee/lex/issues", "github": "https://github.com/jbee/lex" }
+bgcolor: "#5CA2C6"
+color: "#234"
 ---
 
 # Linear EXpressions
@@ -13,7 +15,10 @@ links: { "issues": "https://github.com/jbee/lex/issues", "github": "https://gith
 * parsing
 * terminals
 
-A way to define patterns for terminals in an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
+{% include links.html %}
+
+Linear expressions are a way to define patterns 
+for terminals in an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
 Here *terminal* is understood as any sequence of 
 characters that is one atomic thing. 
 A leaf in a parse tree.

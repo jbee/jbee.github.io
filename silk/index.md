@@ -1,5 +1,11 @@
 ---
 layout: default
+title: "silk"
+summary: "Java dependency injection through code"
+categories: [project, java, "dependency injection"]
+color: "#434"
+bgcolor: "#FCCF8B"
+links: { "issues": "https://github.com/jbee/silk/issues", "github": "https://github.com/jbee/silk" }
 ---
 
 # Java Dependency Injection Through Code
@@ -8,6 +14,7 @@ layout: default
 * library
 * refactoring
 
+{% include links.html %}
 
 ## What happened?
 The detailed documentation provided earlier -- as so often -- got outdated when the code
