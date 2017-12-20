@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Lex"
-summary: "simple and fast pattern matching"
+summary: "simple and fast text pattern matching"
 categories: [project, parsing]
 links: { "issues": "https://github.com/jbee/lex/issues", "github": "https://github.com/jbee/lex" }
 bgcolor: "#5CA2C6"

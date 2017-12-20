@@ -118,7 +118,7 @@ Robot robot = injector.resolve(dependency(Robot.class));
 Maven is part of the complexity problem. I you don't see that yet you will struggle to see
 why someone would prefer a library over a framework, code over annotations yadda yadda yadda. 
 Take it as a hint. Maybe you feel that something isn't right? 
-Then open your mind for the possibility that maven is one of those things and you'll understand. 
+Then open your mind for the possibility that maven is one of those things and you'll understand eventually. 
 
 
 ## How to learn it
