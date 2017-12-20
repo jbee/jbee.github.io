@@ -1,7 +1,7 @@
 {% if page.links %}
-<nav>Project:
+<nav>Project:<br/>
 	{% for link in page.links %}
-	<a href="{{ link[1] }}">{{ link[0] }}</a> {% unless forloop.last %}|{% endunless %}
+	<a href="{{ link[1] }}">{{ link[0] }}</a> {% unless forloop.last %}<br/>{% endunless %}
 	{% endfor %}
 </nav>
 {% endif %}
