@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Lex"
-summary: "simple and fast text pattern matching"
+summary: "simple and fast shortest match text pattern matching"
 categories: [project, parsing]
 links: { "issues": "https://github.com/jbee/lex/issues", "github": "https://github.com/jbee/lex" }
 bgcolor: "#5CA2C6"
@@ -116,6 +116,7 @@ Most often this is sufficient for lexing.
 
 ## Principles and Properties
 
+* result is always the shortest match
 * match proceeds left to right
 * a (so far) match is always sufficient 
 * there is no backtracking
@@ -142,6 +143,11 @@ Whence the name *linear expressions*.
 No heap memory is needed to process matching.
 A matching function can be written in about 
 [100 LOC](https://github.com/jbee/lex/blob/master/java/se/jbee/lex/Lex.java).
+
+The matching is designed to find the **shortest match**.
+It is by design impossible to find the longest match as
+this would already theoretically contradict the goal
+properties described above.
 
 
 ## Examples
