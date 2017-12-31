@@ -158,3 +158,4 @@ Otherwise just ask [me](http://jbee.github.io) for help.
 
 * [mocking](https://github.com/jbee/silk/blob/master/src/test/se/jbee/inject/bind/TestMockingBinds.java): "teach" the container to mock undefined dependencies in tests
 * [state-switches](https://github.com/jbee/silk/blob/master/src/test/se/jbee/inject/bind/TestStateDependentBinds.java): inject different instances depending on runtime state
+* [initialisers](https://github.com/jbee/silk/blob/master/src/test/se/jbee/inject/bind/TestInitialiserBinds.java): using initialisers to automatically close `AutoCloseable`s
