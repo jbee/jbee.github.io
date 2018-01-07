@@ -5,7 +5,7 @@ summary: "Java dependency injection through code"
 categories: [project, java, "dependency injection"]
 color: "#434"
 bgcolor: "#FCCF8B"
-links: { "issues": "https://github.com/jbee/silk/issues", "github": "https://github.com/jbee/silk" }
+links: { "<img src='https://travis-ci.org/jbee/silk.svg?branch=master' />": "https://travis-ci.org/jbee/silk", "issues": "https://github.com/jbee/silk/issues", "github": "https://github.com/jbee/silk" }
 ---
 
 # Java Dependency Injection Through Code
