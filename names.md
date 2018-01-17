@@ -1,11 +1,11 @@
 ---
 layout: default
-title: "That Alien"
+title: "Aladdin Sane meats Ziggy Stardust"
 summary: "Name generation with programming basics"
 categories: [writing, spacecrafts]
 ---
 
-# That Alien
+# Aladdin Sane meats Ziggy Stardust
 
 * exercise
 * game

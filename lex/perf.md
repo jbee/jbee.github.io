@@ -1,11 +1,11 @@
 ---
 layout: default
-title: "Byte Golf"
+title: "Byte Thimblerigger"
 summary: "byte level performance tricks"
 categories: [writing, detail, performance]
 ---
 
-# Byte Golf
+# Byte Thimblerigger
 
 * performance
 * optimisation

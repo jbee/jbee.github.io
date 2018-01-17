@@ -9,7 +9,7 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,700,900');
 body { max-width: 600px; padding: 0; margin: 0 auto; position: relative; font-family: Rubik; font-weight: 300; line-height: 1.4; }
 header { position: fixed; display: block; width: 100%; left: 0; top: 0; padding: 1em 0; background-color: white; z-index: 100; }
-header { border-bottom: 5px solid {% if page.bgcolor %}{{page.bgcolor}}{% elsif page.categories contains 'writing' %}#BFDCC6{% else %}#dde{% endif %}; }
+header { border-bottom: 5px solid {% if page.bgcolor %}{{page.bgcolor}}{% elsif page.categories contains 'writing' %}PowderBlue{% else %}MediumPurple{% endif %}; }
 header nav { max-width: 540px; margin: 0 auto; }
 footer { border-top: 1px solid #ccc; padding: 1em 50px; }
 footer a:visited, nav a:visited, blockquote a:visited, dt a:visited { color: blue; }
@@ -57,7 +57,7 @@ h1 + ul li { display: inline; font-weight: 400; color: white; background-color: 
 	<section>{{ content }}</section>
 
 	<footer>
-		<small>(c)</small> 2017 <a href="mailto:jaanbernitt+jbee.github.io@gmail.com">Jan Bernitt</a>  
+		(c) 2017 <a href="mailto:jaanbernitt+jbee.github.io@gmail.com">Jan Bernitt</a>  
 	</footer>
 </body>
 </html>
