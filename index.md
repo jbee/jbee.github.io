@@ -16,9 +16,7 @@ Seeing technologies rise and fall on Planet Wyh Minsky thought:
 
 > I can help
 
-...
-
-## Projects
+**Projects**
 
 <dl>
 {% for page in site.pages %}
@@ -26,7 +24,7 @@ Seeing technologies rise and fall on Planet Wyh Minsky thought:
 {% endfor %}
 </dl>
 
-## Writings 
+**Writings**
 
 <dl>
 {% for page in site.pages %}
