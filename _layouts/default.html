@@ -5,39 +5,38 @@
 	<meta name="author" content="Jan Bernitt" />
 	<title>{{page.title}}</title>
 	<style>
-@import url('https://fonts.googleapis.com/css?family=Space+Mono:400,400i,700,700i');
-@import url('https://fonts.googleapis.com/css?family=Barlow+Condensed:300,400,400i,600,600i');
-@import url('https://fonts.googleapis.com/css?family=Barlow:900');
-body { max-width: 600px; padding: 0; margin: 0 auto; position: relative; }
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600');
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,700,900');
+body { max-width: 600px; padding: 0; margin: 0 auto; position: relative; font-family: Rubik; font-weight: 300; line-height: 1.4; }
 header { position: fixed; display: block; width: 100%; left: 0; top: 0; padding: 1em 0; background-color: white; z-index: 100; }
 header { border-bottom: 5px solid {% if page.bgcolor %}{{page.bgcolor}}{% elsif page.categories contains 'writing' %}#BFDCC6{% else %}#dde{% endif %}; }
-header, footer, nav { font-family: 'Barlow Condensed'; }
 header nav { max-width: 540px; margin: 0 auto; }
 footer { border-top: 1px solid #ccc; padding: 1em 50px; }
 footer a:visited, nav a:visited, blockquote a:visited, dt a:visited { color: blue; }
 footer a, nav a, blockquote a, dt a { text-decoration: none; }
 section { padding: 0 30px; border-right: 1px solid #ccc; margin: 100px 0 2em 0; }
 section nav { position: absolute; right: -150px; width: 120px; }
-header small, footer small { font-family: 'Space Mono', monospace; font-weight: bold; }
-h1 { padding: 2em 50px 1em; margin: 0 -50px 1em -50px; font-weight: 900; font-size: 36px; text-align: center; font-family: Barlow; }
-h2 { padding-top: 2em; display: block; font-size: 20px; text-transform: uppercase; font-weight: 600; font-family: 'Barlow Condensed'; }
-dt { font-family: 'Barlow Condensed';}
+header small, footer small { font-weight: 400; }
+h1 { padding: 2em 50px 1em; margin: 0 -50px 1em -50px; font-weight: 700; font-size: 36px; text-align: center; }
+h2 { padding-top: 2em; display: block; font-size: 20px; text-transform: uppercase; font-weight: 500; letter-spacing: -1px; word-spacing: 0.3em; }
+dt { font-weight: 400; }
+dd { margin-left: 1em; }
 ul, ol { padding-left: 2em; }
-pre { padding: 2px; tab-size: 4; background-color: #ddd; }
-pre, code { font-family: 'Space Mono', monospace; font-size: 14px; }
-p code, li code {  white-space: nowrap; background-color: #ddd; line-height: 1em; padding: 0 2px; }
+pre { padding: 2px; tab-size: 4; background-color: #eee; }
+pre, code { font-family: 'Source Code Pro', monospace; font-size: 14px; font-weight: 400; }
+p code, li code {  white-space: nowrap; background-color: #eee; line-height: 1em; padding: 0 2px; }
 blockquote { margin: 2em 1em; text-align: center; font-style: italic; }
 blockquote em { font-style: normal; }
-b, strong { font-weight: 600; }
+b, strong { font-weight: 400; }
 svg { margin: 0 auto; display: block; } 
-em code { font-weight: bold; font-style: normal; }
+em code { font-weight: 600; font-style: normal; }
 hr { margin: 0.5em 0; }
 hr + ol { font-size: 10px; color: #333; }
 /* ? */
-big { font-size: 100px; display: block; padding: 30px 0; font-family: Barlow; text-align: center; }
+big { font-size: 100px; display: block; padding: 30px 0; text-align: center; font-weight: 900; }
 /* tags */
 h1 + ul { padding: 0; margin: 0; position: absolute; left: -120px; width: 120px; }
-h1 + ul li { display: inline; font-weight: 600; font-family: 'Barlow Condensed'; color: white; background-color: black; text-transform: uppercase; font-size: 14px; padding: 0 2px; margin: 1px 0; white-space: nowrap; }
+h1 + ul li { display: inline; font-weight: 400; color: white; background-color: black; text-transform: uppercase; font-size: 13px; line-height: 1.1; padding: 2px; margin: 0; white-space: nowrap; }
 /* code blocks */
 .kd, .kt { font-weight: 600;}
 .c1 { font-style: italic; }
