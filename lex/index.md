@@ -4,7 +4,7 @@ title: "Lex"
 summary: "simple and fast shortest match text pattern matching"
 categories: [project, parsing]
 links: { "issues": "https://github.com/jbee/lex/issues", "github": "https://github.com/jbee/lex" }
-bgcolor: "#5CA2C6"
+bgcolor: "#BBDEFB"
 color: "#234"
 ---
 
