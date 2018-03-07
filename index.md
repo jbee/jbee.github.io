@@ -16,22 +16,6 @@ Seeing technologies rise and fall on planet Wyh Minsky thought:
 
 > I can help
 
-**Projects**
+**Projects**: {% for page in site.pages %}{% if page.categories contains 'project' %}<a href="{{ page.url }}" title="{{ page.summary }}">{{ page.title }}</a>, {% endif %}{% endfor %} ...
 
-<dl>
-{% for page in site.pages %}
-{% if page.categories contains 'project' %}<dt><a href="{{ page.url }}">{{ page.title }}</a></dt><dd>{{page.summary}}</dd>{% endif %}
-{% endfor %}
-</dl>
-
-**Writings**
-
-<dl>
-{% for page in site.pages %}
-{% if page.categories contains 'writing' %}<dt><a href="{{ page.url }}">{{ page.title }}</a></dt><dd>{{page.summary}}</dd>{% endif %}
-{% endfor %}
-</dl>
-
-
-
-
+**Writings**: {% for page in site.pages %}{% if page.categories contains 'writing' %}<a href="{{ page.url }}" title="{{ page.summary }}">{{ page.title }}</a>, {% endif %}{% endfor %} ...
