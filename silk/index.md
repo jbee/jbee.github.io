@@ -4,7 +4,7 @@ title: "silk"
 summary: "Java dependency injection through code"
 categories: [project, java, "dependency injection"]
 color: "#434"
-bgcolor: "#FFECB3"
+bgcolor: "Gold"
 links: { "<img src='https://travis-ci.org/jbee/silk.svg?branch=master' />": "https://travis-ci.org/jbee/silk", "issues": "https://github.com/jbee/silk/issues", "github": "https://github.com/jbee/silk" }
 ---
 
@@ -84,11 +84,12 @@ wrongly scoped.
 
 
 ## How to use it
-* Checkout the [sources](https://github.com/jbee/silk) or pick a 
-[release](https://github.com/jbee/silk/releases),
-* use `ant jar` or `ant release` to build a jar and add it to the classpath,
-* declare some bindings in a module using a fluent API
-{%highlight java %}
+Checkout the [sources](https://github.com/jbee/silk) or pick a 
+[release](https://github.com/jbee/silk/releases) and
+use `ant jar` or `ant release` to build a jar and add it to the classpath.
+
+Declare some bindings in a module using a fluent API:
+```java
 class RobotLegsProblem extends BinderModule {
 
 	@Override
@@ -103,15 +104,17 @@ class RobotLegsProblem extends BinderModule {
 			.bind(Foot.class).to(right, Foot.class);
 	}
 }
-{%endhighlight%}
-* bootstrap the container
-{%highlight java %}
+```
+
+Bootstrap the container:
+```java
 Injector injector = Bootstrap.injector(RobotLegsProblem.class);
-{%endhighlight%}
-* resolve the root instance
-{%highlight java %}
+```
+
+Resolve the root instance:
+```java
 Robot robot = injector.resolve(dependency(Robot.class)); 
-{%endhighlight%}
+```
 
 
 ## What about maven?

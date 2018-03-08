@@ -3,9 +3,11 @@ layout: default
 title: "a common theme"
 ---
 
-# a common theme
+<nav>
+<b>Projects</b><br/><br/> {% for page in site.pages %}{% if page.categories contains 'project' %}<a href="{{ page.url }}" title="{{ page.summary }}">{{ page.title }}</a><br/> {% endif %}{% endfor %}
+</nav>
 
-how to not end up in a mess -- or -- less is more, nothing is everything. In code, writing and life. 
+**a common theme**: how to not end up in a mess -- or -- less is more, nothing is everything. In code, writing and life. 
 What is essential to understand cannot be said, but learned following clues; like: _better not look at my finger when I'm pointing to the moon_.
 
 In light of this,
@@ -16,6 +18,8 @@ Seeing technologies rise and fall on planet Wyh Minsky thought:
 
 > I can help
 
-**Projects**: {% for page in site.pages %}{% if page.categories contains 'project' %}<a href="{{ page.url }}" title="{{ page.summary }}">{{ page.title }}</a>, {% endif %}{% endfor %} ...
 
+<!--
 **Writings**: {% for page in site.pages %}{% if page.categories contains 'writing' %}<a href="{{ page.url }}" title="{{ page.summary }}">{{ page.title }}</a>, {% endif %}{% endfor %} ...
+-->
+

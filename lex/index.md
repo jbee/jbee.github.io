@@ -1,10 +1,10 @@
 ---
 layout: default
 title: "Lex"
-summary: "simple and fast shortest match text pattern matching"
+summary: "simple and fast first match text pattern matching"
 categories: [project, parsing]
 links: { "issues": "https://github.com/jbee/lex/issues", "github": "https://github.com/jbee/lex" }
-bgcolor: "#BBDEFB"
+bgcolor: "DeepSkyBlue"
 color: "#234"
 ---
 
@@ -47,6 +47,10 @@ The matching does not care about language level
 constraints, like a exact length limitation. 
 These can be checked at a later compilation stage.
 
+The implementation is based on fundamentel 
+programing concepts that are easy to port to about
+any language.
+
 
 ## Rules
 Rules are byte instructions designed to give the 
@@ -72,7 +76,7 @@ Thou some instructions are no-ops used as markers.
 All bytes within a set `{`...`}` are literal.
 Hence, `}`/`{` cannot be included in a set explicitly.
 `{^}` matches `^` while any set starting with `^` 
-defining further members is excludes these members.
+defining further members excludes these members.
 
 **Repetition**
 
@@ -85,7 +89,7 @@ defining further members is excludes these members.
 
 Groups are most useful when nested and used in 
 combination with `+`, like `(a[b(c)+])`.
-A regex `*` can be build using `[x]+`.
+A regex `*` (zero or more) can be build using `[x]+`.
 
 **Scanning**
 
@@ -116,10 +120,9 @@ Most often this is sufficient for lexing.
 
 ## Principles and Properties
 
-* result is always the shortest match
-* match proceeds left to right
-* a (so far) match is always sufficient 
-* there is no backtracking
+* result is always the **first** match
+* match proceeds left to right (in both input and pattern)
+* matching never goes backwards (in input or pattern)
 * `+` is always greedy (stops on first mismatch)
 * `~` is always non-greedy (stops on first match)
 * sets are limited to ASCII (a single byte)
@@ -144,10 +147,13 @@ No heap memory is needed to process matching.
 A matching function can be written in about 
 [100 LOC](https://github.com/jbee/lex/blob/master/java/se/jbee/lex/Lex.java).
 
-The matching is designed to find the **shortest match**.
-It is by design impossible to find the longest match as
-this would already theoretically contradict the goal
-properties described above.
+The matching is designed to find the **first match**. 
+Matching always ends on first not recovered mismatch.
+
+It is by design impossible to find the longest or shortest match as
+this would already theoretically contradict the goal properties described above.
+Some pattern can be designed so that the first match must as well be the 
+shortest or longest but generally this is not possible.
 
 
 ## Examples
@@ -217,7 +223,12 @@ A better solution, however, is to design the language
 so that such irregularities do not exist. In case of
 java's numbers we could disallow a floating point to 
 start with a bare `.`, what would give the language the 
-property of all number literals starting with a digit.
+property of all number literals starting with a digit
+and the pattern could be simplified to:
+
+```
+#[{xb}][{0-9A-Fa-f_}+][.#+]][{dDfFlL}]
+```
 
 Therefore the limitation is less considered a problem 
 and more a guide to keep a language regular.
@@ -226,6 +237,14 @@ Also cases are often better handled as different
 terminal tokens of the language. So in practice cases
 do occur on a different level making this a non-issue.
 
+Integers, floats, binary and hexadecimal literals could be:
+```
+#+
+#+.#+
+0b{01_}+
+0x{0-9A-Fa-f_}+
+```
+The _OR_ would occur on parser level.
 
 ## Performance
 In a very much non-systematic [measurement](https://github.com/jbee/lex/blob/master/java/se/jbee/lex/TestLexPerf.java) using 
@@ -236,7 +255,7 @@ most cases.
 The compiling phase needed for regular expressions was
 not included in the time measured in the assumption 
 that this cost usually is only payed once. 
-If this cost would be included Lex is most likely
+If this cost would be included Lex is most often
 faster as it has no such cost.
 
 Scanning through text can be about 5 times faster than 
