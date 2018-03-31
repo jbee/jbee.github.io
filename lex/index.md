@@ -56,7 +56,6 @@ any language.
 Rules are byte instructions designed to give the 
 appearance of syntax, but there is none.
 It is a byte-encoded interpreted language.
-Thou some instructions are no-ops used as markers.
 
 **Sets**
 
@@ -66,11 +65,10 @@ Thou some instructions are no-ops used as markers.
 * `}a-c{`   range of `a` to `c` and all non ASCII bytes
 * `#`       any ASCII digit (=`{0-9}`)
 * `@`       any ASCII letter (=`{a-zA-Z}`)
+* `$`       ASCII newline (\n or \r)
 * `_`       any ASCII whitespace character
 * `^`       any byte that is not an ASCII whitespace character
 * `*`       any single byte
-* `!`       any non ASCII byte (`1xxx xxxx`)
-* `$`       ASCII newline (\n or \r)
 
 
 All bytes within a set `{`...`}` are literal.
@@ -78,9 +76,13 @@ Hence, `}`/`{` cannot be included in a set explicitly.
 `{^}` matches `^` while any set starting with `^` 
 defining further members excludes these members.
 
+`}{` matches all non ASCII bytes.
+
 **Repetition**
 
 * `+`      try previous set, group or literal again
+
+If `+` is followed by another `+` the behaviour is undefined.
 
 **Groups**
 
@@ -89,7 +91,9 @@ defining further members excludes these members.
 
 Groups are most useful when nested and used in 
 combination with `+`, like `(a[b(c)+])`.
-A regex `*` (zero or more) can be build using `[x]+`.
+The regex `*` (zero or more) can be build using `[x]+`.
+
+`)` and `]` are identical and close the currently open group.
 
 **Scanning**
 
@@ -99,10 +103,12 @@ Clarification: `a~b` matches *`axxxb`*`xxb` (darker part).
 To end the match only on a specific sequence or pattern
 use a group: `a~(bc)` matches *`axxxbxxbc`*`xxbc`.
 
-Any other byte (not `{}()[]#@^_$+~!*`) is matched 
+Any other byte (not `{}()[]#@^_$+~*`) is matched 
 literally. 
 Sets can be used to match any of the instruction symbols 
 literally, like `{~}`.
+
+If `~` is followed by another `~` or a `+` the behaviour is undefined.
 
 
 ## Encoding
