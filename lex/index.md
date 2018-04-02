@@ -11,6 +11,7 @@ color: "#234"
 # Linear EXpressions
 
 * spec
+* v2
 * pattern matching
 * parsing
 * terminals
@@ -71,11 +72,10 @@ It is a byte-encoded interpreted language.
 * `*`       any single byte
 
 
-All bytes within a set `{`...`}` are literal.
-Hence, `}`/`{` cannot be included in a set explicitly.
-`{^}` matches `^` while any set starting with `^` 
-defining further members excludes these members.
-
+All bytes within a set are matched literal, except `-`, `^`, `{` and `}`. 
+These need to be escaped with `\-`, `\^`, `\{` and `\}` to be matched literally.
+Other bytes _can_ be escaped but there is no need to.
+`{^}` matches `^`, `{-}` matches `-`. 
 `}{` matches all non ASCII bytes.
 
 **Repetition**
@@ -95,6 +95,10 @@ The regex `*` (zero or more) can be build using `[x]+`.
 
 `)` and `]` are identical and close the currently open group.
 
+To embed an expression in another byte encoded instruction language the pattern
+can be enclosed in `` `...` `` in backticks. The `` ` `` instruction exits the
+current block unless it is the first byte in that block.
+
 **Scanning**
 
 * `~`      skip until following set, group or literal matches
@@ -103,12 +107,12 @@ Clarification: `a~b` matches *`axxxb`*`xxb` (darker part).
 To end the match only on a specific sequence or pattern
 use a group: `a~(bc)` matches *`axxxbxxbc`*`xxbc`.
 
-Any other byte (not `{}()[]#@^_$+~*`) is matched 
-literally. 
-Sets can be used to match any of the instruction symbols 
-literally, like `{~}`.
-
 If `~` is followed by another `~` or a `+` the behaviour is undefined.
+
+
+Any other byte (not `` {}()[]#@^_$+~*`\ ``) is matched literally. 
+To match instructions literally they can be escaped with `\`.
+In sets only `{}^-` need escaping. In general any byte can be escaped.
 
 
 ## Encoding
@@ -132,6 +136,7 @@ Most often this is sufficient for lexing.
 * `+` is always greedy (stops on first mismatch)
 * `~` is always non-greedy (stops on first match)
 * sets are limited to ASCII (a single byte)
+* `\` escaping can be applied to any byte
 
 Consequently the parser must make progress either in
 input or pattern.
@@ -198,7 +203,7 @@ Strings
 Identifiers
 
 * `@+[{-_}{a-zA-Z0-9}+]+`: general letters and digits; `foo`, `Foo`, `foo-bar`, `fooBar`, `foo_bar`, `foo1`, `foo2bar`, ...
-* `{$}@}a-zA-Z0-9_{`: php style; `$foo`, `$föö`, `$FOO2`, `$foo_bar`
+* `{$}@}a-zA-Z0-9_{+`: php style; `$foo`, `$föö`, `$FOO2`, `$foo_bar`
 
 Phone Numbers
 
