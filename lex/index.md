@@ -18,15 +18,20 @@ color: "#234"
 
 {% include links.html %}
 
-Linear expressions are a way to define patterns 
+In general linear expression are a simple intuitive tool to 
+determine if a certain byte pattern occurs and where it ends.
+In case of a mismatch they point out the problematic position
+in both pattern and input sequence.
+
+
+## Motivation
+
+Linear expressions are my solution to define patterns 
 for terminals in an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
-Here *terminal* is understood as any sequence of 
+*Terminal* here is understood as any sequence of 
 characters that is one atomic thing. 
 A leaf in a parse tree.
-Like identifiers, numbers or string literals. 
-
-**Question:** *Does the input start with a pattern that 
-makes it a certain terminal and where does it end?*
+Like identifiers, numbers or string literals.
 
 With the goal of implementing a full general parser 
 in very little code the use of regular expressions is 
