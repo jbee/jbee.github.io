@@ -151,9 +151,10 @@ input or pattern.
 Otherwise a mismatch has been found at the current
 input position.
 
-The worst cases are scanning `~` and optional groups `[...]`
+The worst cases are scanning `~`, optional groups `[...]`
+and excessive sets `{...}`.
 that try to match and otherwise recover by making progress
-in either the input (`~`) or the pattern (`[...]`).
+in either the input (`~`) or the pattern (`[...]`, `{...}`).
 In all other cases progress is always made in both.
 Consequently mismatches are most often identified immediately.
 
