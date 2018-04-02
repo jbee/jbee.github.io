@@ -42,13 +42,14 @@ intuitive patterns to match quite complex terminals.
 
 A thread-safe interpreter matching function that is 
 allocation-free and has no global state.
-The function is embeddable into a general parser.
+The function is embeddable into a general parser
+and return end position in input and pattern.
 
 The matching does not care about language level 
 constraints, like a exact length limitation. 
 These can be checked at a later compilation stage.
 
-The implementation is based on fundamentel 
+The implementation is based on fundamental 
 programing concepts that are easy to port to about
 any language.
 
@@ -110,6 +111,8 @@ use a group: `a~(bc)` matches *`axxxbxxbc`*`xxbc`.
 If `~` is followed by another `~` or a `+` the behaviour is undefined.
 
 
+**Literals**
+
 Any other byte (not `` {}()[]#@^_$+~*`\ ``) is matched literally. 
 To match instructions literally they can be escaped with `\`.
 In sets only `{}^-` need escaping. In general any byte can be escaped.
@@ -136,7 +139,7 @@ Most often this is sufficient for lexing.
 * `+` is always greedy (stops on first mismatch)
 * `~` is always non-greedy (stops on first match)
 * sets are limited to ASCII (a single byte)
-* `\` escaping can be applied to any byte
+* `\` escaping can be applied to any byte anywhere
 
 Consequently the parser must make progress either in
 input or pattern.
@@ -269,10 +272,13 @@ that this cost usually is only payed once.
 If this cost would be included Lex is most often
 faster as it has no such cost.
 
+Consider also that Lex is allocation free while 
+RegEx most likely is not.
+
 Scanning through text can be about 5 times faster than 
 regular expressions when using a [performance optimisation](perf.html)
-for `~`. That one comes at the cost of about [40 LOC](https://github.com/jbee/lex/blob/master/java/se/jbee/lex/Lex.java#L173-L221) --
-what is a lot -- considering the whole unoptimized 
+for `~`. That one comes at the cost of about [50 LOC](https://github.com/jbee/lex/blob/master/java/se/jbee/lex/Lex.java#L208-L260) --
+what is a lot -- considering the whole basic 
 implementation is about 100 LOC.
 
 The fast path only works when `~` is followed by
@@ -283,7 +289,7 @@ even `~(foo~(bar))`.
 The speed gain is proportional to the length of the 
 literal sequence. A longer sequence is found faster.
 Theoretically it can be extended to also work with sets
-but that is another 40 LOC or so.
+but that is another 50 LOC or so.
 Rough number: a 20 MB text file can be searched in about 100ms.
 No [grep](https://www.gnu.org/software/grep/) but pretty good for a small tool.
 
