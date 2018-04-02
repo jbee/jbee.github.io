@@ -210,7 +210,7 @@ Identifiers
 
 Phone Numbers
 
-* `[{+}]#+[{ -}#+]+`: local or international; `0150 963852`, `0150-963852`, `+49 12345 698547`, ...
+* `[\+]#+[{ -}#+]+`: local or international; `0150 963852`, `0150-963852`, `+49 12345 698547`, ...
 
 
 ## Philosophy
@@ -258,7 +258,8 @@ Integers, floats, binary and hexadecimal literals could be:
 0b{01_}+
 0x{0-9A-Fa-f_}+
 ```
-The _OR_ would occur on parser level.
+The _OR_ would occur on parser level where they could be
+in reverse order (compared to above) to match first correctly.
 
 ## Performance
 In a very much non-systematic [measurement](https://github.com/jbee/lex/blob/master/java/se/jbee/lex/TestLexPerf.java) using 
