@@ -18,18 +18,23 @@ color: "#234"
 
 {% include links.html %}
 
-In general linear expression are a simple intuitive tool to 
-determine if a certain byte pattern occurs and where it ends.
-In case of a mismatch they point out the problematic position
-in both pattern and input sequence.
+Linear expression are a intuitive pattern language to 
+find or check patterns and their end position in byte sequences.
+They are simpler, often faster and more predictable than 
+[regular expressions](https://en.wikipedia.org/wiki/Regular_expression).
 
+In case of a mismatch they point out the problematic 
+position in both pattern and input sequence.
+
+They do not offer features like grouping, capturing or 
+replacing input.
 
 ## Motivation
 
 Linear expressions are my solution to define patterns 
 for terminals in an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
 *Terminal* here is understood as any sequence of 
-characters that is one atomic thing. 
+characters that descrives one atomic thing. 
 A leaf in a parse tree.
 Like identifiers, numbers or string literals.
 
@@ -46,17 +51,18 @@ Goal: a minimal set of features that allow to define
 intuitive patterns to match quite complex terminals.
 
 A thread-safe interpreter matching function that is 
-allocation-free and has no global state.
+allocation-free and has neither global state nor a 
+compilation phase.
 The function is embeddable into a general parser
-and return end position in input and pattern.
+and returns the match end position in input and pattern.
 
 The matching does not care about language level 
 constraints, like a exact length limitation. 
 These can be checked at a later compilation stage.
 
-The implementation is based on fundamental 
-programing concepts that are easy to port to about
-any language.
+The implementation does not require further libraries
+and is only based on fundamental programing concepts 
+that are easy to port to about any language.
 
 
 ## Rules
@@ -69,7 +75,7 @@ It is a byte-encoded interpreted language.
 * `{abc}`   a set of bytes `a`,`b` and `c`
 * `{^ac}`   a set of any byte but `a` and `c`
 * `{a-c}`   a set of `a`, `b` and `c` given as a range
-* `}a-c{`   range of `a` to `c` and all non ASCII bytes
+* `}a-c{`   range of `a` to `c` and all non-ASCII bytes
 * `#`       any ASCII digit (=`{0-9}`)
 * `@`       any ASCII letter (=`{a-zA-Z}`)
 * `$`       ASCII newline (\n or \r)
@@ -131,7 +137,7 @@ UTF-8, and badly with others.
 
 UTF-8 literals can be matched by defining the pattern
 in UTF-8 as well. Sets can only allow `}...{` or  
-disallow `{...}` any non ASCII byte what includes or
+disallow `{...}` any non-ASCII byte what includes or
 excludes any non ASCII UTF-8 symbol. 
 Most often this is sufficient for lexing.
 
@@ -139,22 +145,26 @@ Most often this is sufficient for lexing.
 ## Principles and Properties
 
 * result is always the **first** match
-* match proceeds left to right (in both input and pattern)
+* matching proceeds left to right (in both input and pattern)
+* matching is not line based
 * matching never goes backwards (in input or pattern)
 * `+` is always greedy (stops on first mismatch)
 * `~` is always non-greedy (stops on first match)
 * sets are limited to ASCII (a single byte)
 * `\` escaping can be applied to any byte anywhere
+* there are no modes
 
 Consequently the parser must make progress either in
 input or pattern.
 Otherwise a mismatch has been found at the current
 input position.
+This also implies that identifying a mismatch is always 
+faster than a successful match.
 
 The worst cases are scanning `~`, optional groups `[...]`
-and excessive sets `{...}`.
-that try to match and otherwise recover by making progress
-in either the input (`~`) or the pattern (`[...]`, `{...}`).
+and excessive sets `{...}` that try to match and otherwise 
+recover by making progress in either the input (`~`) or 
+the pattern (`[...]`, `{...}`).
 In all other cases progress is always made in both.
 Consequently mismatches are most often identified immediately.
 
@@ -169,6 +179,7 @@ A matching function can be written in about
 
 The matching is designed to find the **first match**. 
 Matching always ends on first not recovered mismatch.
+Hence, the greedy `+` will not backtrack in case of a mismatch.
 
 It is by design impossible to find the longest or shortest match as
 this would already theoretically contradict the goal properties described above.
@@ -207,12 +218,12 @@ Strings
 * `"{^"}+"`: quoted string (no escaping); `"foo"`, `"1"`, ...
 * `"~"`: quoted string (no escaping); `"foo"`, `"1"`, ...
 * `"~({^\}")`: quoted string (escaping); `"foo"`, `"foo\"bar"`, ... 
-* `"""~("""")`: triple quoted string; `"""foo"""`, `"""foo"bar"baz"""`, ...
+* `"""~(""")`: triple quoted string; `"""foo"""`, `"""foo"bar"baz"""`, ...
 
 Identifiers
 
 * `@+[{-_}{a-zA-Z0-9}+]+`: general letters and digits; `foo`, `Foo`, `foo-bar`, `fooBar`, `foo_bar`, `foo1`, `foo2bar`, ...
-* `{$}@}a-zA-Z0-9_{+`: php style; `$foo`, `$föö`, `$FOO2`, `$foo_bar`
+* `\$@}a-zA-Z0-9_{+`: php style; `$foo`, `$föö`, `$FOO2`, `$foo_bar`
 
 Phone Numbers
 
@@ -227,7 +238,7 @@ potentially matches more but does not conflict with
 other patterns. Full conformity is then checked in 
 later stages of the parsing.
 
-A (simplified) pattern to e.g. match any java number is:
+A rough pattern to e.g. match any java number is:
 
 ```
 {.0-9}[{.xb0-9}[{0-9A-Fa-f_}+][.#+]][{dDfFlL}]
@@ -240,7 +251,7 @@ The number tokens would need an additional check at a
 later stage, similar to a overall length check.
 
 A better solution, however, is to design the language
-so that such irregularities do not exist. In case of
+so that such irregularities do not occur. In case of
 java's numbers we could disallow a floating point to 
 start with a bare `.`, what would give the language the 
 property of all number literals starting with a digit
