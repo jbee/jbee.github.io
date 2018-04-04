@@ -34,7 +34,7 @@ replacing input.
 Linear expressions are my solution to define patterns 
 for terminals in an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
 *Terminal* here is understood as any sequence of 
-characters that descrives one atomic thing. 
+characters that describes one atomic thing. 
 A leaf in a parse tree.
 Like identifiers, numbers or string literals.
 
@@ -94,12 +94,12 @@ Other bytes _can_ be escaped but there is no need to.
 
 * `+`      try previous set, group or literal again
 
-If `+` is followed by another `+` the behaviour is undefined.
+A `+` followed by more `+` is a slower version of one `+`.
 
 **Groups**
 
 * `(abc)`  a group where the sequence `abc` *must* occur
-* `[abc]`  a group with sequence `abc` that *can* occur
+* `[abc]`  a group with the sequence `abc` that *can* occur
 
 Groups are most useful when nested and used in 
 combination with `+`, like `(a[b(c)+])`.
@@ -109,7 +109,8 @@ The regex `*` (zero or more) can be build using `[x]+`.
 
 To embed an expression in another byte encoded instruction language the pattern
 can be enclosed in `` `...` `` in backticks. The `` ` `` instruction exits the
-current block unless it is the first byte in that block.
+current block unless it is the first byte in that block. As such it serves as
+a marker for the beginning of an embedded expression.
 
 **Scanning**
 
@@ -119,7 +120,8 @@ Clarification: `a~b` matches *`axxxb`*`xxb` (darker part).
 To end the match only on a specific sequence or pattern
 use a group: `a~(bc)` matches *`axxxbxxbc`*`xxbc`.
 
-If `~` is followed by another `~` or a `+` the behaviour is undefined.
+A `~` followed by more `~` its a slower version of one `~`.
+A `~` followed by a `+` always is a mismatch.
 
 
 **Literals**
@@ -151,7 +153,7 @@ Most often this is sufficient for lexing.
 * `+` is always greedy (stops on first mismatch)
 * `~` is always non-greedy (stops on first match)
 * sets are limited to ASCII (a single byte)
-* `\` escaping can be applied to any byte anywhere
+* `\` escaping can be applied to any subsequent byte anywhere
 * there are no modes
 
 Consequently the parser must make progress either in
@@ -168,7 +170,7 @@ the pattern (`[...]`, `{...}`).
 In all other cases progress is always made in both.
 Consequently mismatches are most often identified immediately.
 
-The computational complexity is never worse than O(n). 
+The computational complexity is (almost) never worse than O(n)<sup>1)</sup>. 
 In worst case n is the longer length (of input or pattern).
 In best case n is the shorter length (of input or pattern).
 Whence the name *linear expressions*.
@@ -310,4 +312,9 @@ Theoretically it can be extended to also work with sets
 but that is another 50 LOC or so.
 Rough number: a 20 MB text file can be searched in about 100ms.
 No [grep](https://www.gnu.org/software/grep/) but pretty good for a small tool.
+
+-----------------
+<sup>1)</sup> <small>A pattern with cascaded scans `~(x~(y~z))` on a input with 
+a lot of `x` might be as bad as almost O(n<sup>2</sup>). This is both abusing 
+the tool and highly unlikely. </small>
 
