@@ -83,7 +83,6 @@ It is a byte-encoded interpreted language.
 * `^`       any byte that is not an ASCII whitespace character
 * `*`       any single byte
 
-
 All bytes within a set are matched literal, except `-`, `^`, `{` and `}`. 
 These need to be escaped with `\-`, `\^`, `\{` and `\}` to be matched literally.
 Other bytes _can_ be escaped but there is no need to.
@@ -106,15 +105,16 @@ combination with `+`, like `(a[b(c)+])`.
 The regex `*` (zero or more) can be build using `[x]+`.
 
 `)` and `]` are identical and close the currently open group.
+Any open groups at the end of a pattern are implicitly closed.
 
 To embed an expression in another byte encoded instruction language the pattern
-can be enclosed in `` `...` `` in backticks. The `` ` `` instruction exits the
-current block unless it is the first byte in that block. As such it serves as
-a marker for the beginning of an embedded expression.
+can be enclosed in backticks: `` `...` ``. The `` ` `` instruction exits the
+current block unless it is the first byte in a block or pattern. 
+As such it serves as a marker for the beginning of an embedded expression.
 
 **Scanning**
 
-* `~`      skip until following set, group or literal matches
+* `~`      skip input until following set, group or literal matches
 
 Clarification: `a~b` matches *`axxxb`*`xxb` (darker part). 
 To end the match only on a specific sequence or pattern
@@ -155,6 +155,7 @@ Most often this is sufficient for lexing.
 * sets are limited to ASCII (a single byte)
 * `\` escaping can be applied to any subsequent byte anywhere
 * there are no modes
+* any sequence of bytes is a valid pattern and has defined semantics
 
 Consequently the parser must make progress either in
 input or pattern.
