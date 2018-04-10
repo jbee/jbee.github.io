@@ -327,19 +327,19 @@ No [grep](https://www.gnu.org/software/grep/) but pretty good for a small tool.
 
 ## Clarifications
 
-**On Groups**
+On Groups
 
 * `)`, `]` and even `}` are identical and close 
   the currently open group: `(...)` = `(...]` = `(...}`; `[...]` = `[...)` = `[...}`
 
-**On Scanning**
+On Scanning
 
 * `a~b` matches *`axxxb`*`xxb` (darker part). 
   To end the match only on a specific sequence or pattern
   use a group: `a~(bc)` matches *`axxxbxxbc`*`xxbc`.
 
 
-**On Sets**
+On Sets
 
 * Incomplete ranges, escapes or flips are ineffective 
 (no match), so `{x-}` = `{x}`.
@@ -350,7 +350,7 @@ No [grep](https://www.gnu.org/software/grep/) but pretty good for a small tool.
 * As upper bounds of ranges are always interpreted literally 
   `{+-?}` is the range from `+` to `?`.
 
-**On Literals**
+On Literals
 
 * `\t` is not _TAB_ but literally `t`. 
   Sets provide `@` to encode non-printable ASCIIs with printable ones.
