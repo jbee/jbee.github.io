@@ -85,6 +85,8 @@ A `+` followed by more `+` is a slower version of one `+`.
 Groups can be nested. The opening bracket controls the type of group.
 The regex _*_ (zero or more) can be build using `[...]+`.
 
+Open groups at the end of a pattern are implicitly closed.
+
 
 **Embedding**
 
@@ -120,7 +122,7 @@ A range's upper and lower bounds are inclusive and can use
 flipped `@`_x_ or escaped `\`_x_ bounds. 
 However, the upper bound is always interpreted literally. 
 
-There a extra shorthands instructions for common sets:
+There are extra shorthands instructions for common sets:
 * `#`       any ASCII digit (=`{0-9}`)
 * `@`       any ASCII letter (=`{a-zA-Z}`)
 * `$`       ASCII newline (\n or \r; = `{@J@M}`)
@@ -327,32 +329,32 @@ No [grep](https://www.gnu.org/software/grep/) but pretty good for a small tool.
 
 **On Groups**
 
-`)`, `]` and even `}` are identical and close 
-the currently open group: `(...)` = `(...]` = `(...}`; `[...]` = `[...)` = `[...}`
-Open groups at the end of a pattern are implicitly closed.
+* `)`, `]` and even `}` are identical and close 
+  the currently open group: `(...)` = `(...]` = `(...}`; `[...]` = `[...)` = `[...}`
 
 **On Scanning**
 
-`a~b` matches *`axxxb`*`xxb` (darker part). 
-To end the match only on a specific sequence or pattern
-use a group: `a~(bc)` matches *`axxxbxxbc`*`xxbc`.
+* `a~b` matches *`axxxb`*`xxb` (darker part). 
+  To end the match only on a specific sequence or pattern
+  use a group: `a~(bc)` matches *`axxxbxxbc`*`xxbc`.
 
 
 **On Sets**
 
-Incomplete ranges, escapes or flips are ineffective 
-(no match), so that `{x-}` = `{x}`.
-`{-}`, `{^-}` or `{?-...}` aren't ranges but interpret `-` literally.
-Escaping `\t` is not _TAB_ but matching literally `t`;
-a _TAB_ can be encoded as `@I` (or use the actual _TAB_ byte).
+* Incomplete ranges, escapes or flips are ineffective 
+(no match), so `{x-}` = `{x}`.
+* `{-}`, `{^-}` or `{?-...}` aren't ranges but interpret `-` literally.
+* Escaping `\t` is not _TAB_ but matching literally `t`; 
+  a _TAB_ can be encoded as `@I` (or use the actual _TAB_ byte).
 
-`{+-?}` is the range from `+` to `?`.
+* As upper bounds of ranges are always interpreted literally 
+  `{+-?}` is the range from `+` to `?`.
 
 **On Literals**
 
-`\t` is not _TAB_ but literally `t`. 
-Sets provide `@` to encode non-printable ASCIIs with printable ones.
-Or just encode them as the actual non-printable byte.
+* `\t` is not _TAB_ but literally `t`. 
+  Sets provide `@` to encode non-printable ASCIIs with printable ones.
+  Or just encode them as the actual non-printable byte.
 
 -----------------
 <sup>1)</sup> <small>A pattern with cascaded scans `~(x~(y~z))` on a input with 
