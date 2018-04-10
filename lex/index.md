@@ -26,22 +26,22 @@ They are simpler, often faster and more predictable than
 In case of a mismatch they point out the problematic 
 position in both pattern and input sequence.
 
-They do not offer features like grouping, capturing or 
-replacing input.
+They do not offer features like capturing or input replacement.
 
 ## Motivation
 
 Linear expressions are my solution to define patterns 
 for terminals in an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
 *Terminal* here is understood as any sequence of 
-characters that describes one atomic thing. 
+characters (or bytes) that describes one atomic thing. 
 A leaf in a parse tree.
-Like identifiers, numbers or string literals.
+Like identifiers or number and string literals.
 
 With the goal of implementing a full general parser 
-in very little code the use of regular expressions is 
+with very little code the use of regular expressions is 
 not an option. 
-Besides, they are a complex hard to predict general tool.
+Besides, they are a complex general tool that is 
+hard to predict and master.
 A specific solution tweaked to the needs can be simpler 
 and more predictable.
 
@@ -52,7 +52,7 @@ intuitive patterns to match quite complex terminals.
 
 A thread-safe interpreter matching function that is 
 allocation-free and has neither global state nor a 
-compilation phase.
+compilation or validation phase.
 The function is embeddable into a general parser
 and returns the match end position in input and pattern.
 
@@ -82,7 +82,7 @@ A `+` followed by more `+` is a slower version of one `+`.
 * `(abc)` a sequence `abc` that *must* occur
 * `[abc]` a sequence `abc` that *can* occur
 
-Groups can be nested. The opening bracket control the type of group.
+Groups can be nested. The opening bracket controls the type of group.
 The regex _*_ (zero or more) can be build using `[...]+`.
 
 Clarification: `)`, `]` and even `}` are identical and close 
@@ -135,7 +135,7 @@ Clarification: Incomplete ranges, escapes or flips are ineffective
 Escaping `\t` is not _TAB_ but matching literally `t`;
 a _TAB_ can be encoded as `@I` (or use the actual _TAB_ byte).
 
-Shorthands instructions for common sets:
+There a extra shorthands instructions for common sets:
 * `#`       any ASCII digit (=`{0-9}`)
 * `@`       any ASCII letter (=`{a-zA-Z}`)
 * `$`       ASCII newline (\n or \r; = `{@J@M}`)
@@ -170,7 +170,8 @@ Most often this is sufficient for lexing.
 * result is always the **first** match
 * matching proceeds left to right (in both input and pattern)
 * matching is not line based
-* matching never goes backwards (in input or pattern)
+* matching never goes backwards for input position
+* matching only goes backwards in pattern for `+`
 * `+` is always greedy (stops on first mismatch)
 * `~` is always non-greedy (stops on first match)
 * sets are limited to ASCII (or single bytes)
