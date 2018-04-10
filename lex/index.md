@@ -85,10 +85,6 @@ A `+` followed by more `+` is a slower version of one `+`.
 Groups can be nested. The opening bracket controls the type of group.
 The regex _*_ (zero or more) can be build using `[...]+`.
 
-Clarification: `)`, `]` and even `}` are identical and close 
-the currently open group: `(...)` = `(...]` = `(...}`; `[...]` = `[...)` = `[...}`
-Open groups at the end of a pattern are implicitly closed.
-
 
 **Embedding**
 
@@ -101,10 +97,6 @@ As such it serves as a marker for the beginning of an embedded expression.
 **Scanning**
 
 * `~`      skip input until following set, group or literal matches
-
-Clarification: `a~b` matches *`axxxb`*`xxb` (darker part). 
-To end the match only on a specific sequence or pattern
-use a group: `a~(bc)` matches *`axxxbxxbc`*`xxbc`.
 
 A `~` followed by more `~` its a slower version of one `~`.
 A `~` followed by a `+` is always a mismatch.
@@ -126,14 +118,7 @@ Within a set `{...}` bytes are matched literally, except:
 
 A range's upper and lower bounds are inclusive and can use 
 flipped `@`_x_ or escaped `\`_x_ bounds. 
-However, the upper bound is always interpreted literally: 
-`{+-?}` is the range from `+` to `?`.
-
-Clarification: Incomplete ranges, escapes or flips are ineffective 
-(no match), so that `{x-}` = `{x}`.
-`{-}`, `{^-}` or `{?-...}` aren't ranges but interpret `-` literally.
-Escaping `\t` is not _TAB_ but matching literally `t`;
-a _TAB_ can be encoded as `@I` (or use the actual _TAB_ byte).
+However, the upper bound is always interpreted literally. 
 
 There a extra shorthands instructions for common sets:
 * `#`       any ASCII digit (=`{0-9}`)
@@ -148,9 +133,6 @@ There a extra shorthands instructions for common sets:
 Any other byte (not `` {}()[]#@^_$+~?`\ ``) is matched literally. 
 To match instructions literally they can be escaped with `\`.
 In general any byte can be escaped (also true in sets).
-So `\t` is not _TAB_ but literally `t`. 
-Sets provide `@` to encode non-printable ASCIIs with printable ones.
-Or just encode them as the actual non-printable byte.
 
 
 ## Encoding
@@ -339,6 +321,38 @@ Theoretically it can be extended to also work with sets
 but that is another 50 LOC or so.
 Rough number: a 20 MB text file can be searched in about 100ms.
 No [grep](https://www.gnu.org/software/grep/) but pretty good for a small tool.
+
+
+## Clarifications
+
+**On Groups**
+
+`)`, `]` and even `}` are identical and close 
+the currently open group: `(...)` = `(...]` = `(...}`; `[...]` = `[...)` = `[...}`
+Open groups at the end of a pattern are implicitly closed.
+
+**On Scanning**
+
+`a~b` matches *`axxxb`*`xxb` (darker part). 
+To end the match only on a specific sequence or pattern
+use a group: `a~(bc)` matches *`axxxbxxbc`*`xxbc`.
+
+
+**On Sets**
+
+Incomplete ranges, escapes or flips are ineffective 
+(no match), so that `{x-}` = `{x}`.
+`{-}`, `{^-}` or `{?-...}` aren't ranges but interpret `-` literally.
+Escaping `\t` is not _TAB_ but matching literally `t`;
+a _TAB_ can be encoded as `@I` (or use the actual _TAB_ byte).
+
+`{+-?}` is the range from `+` to `?`.
+
+**On Literals**
+
+`\t` is not _TAB_ but literally `t`. 
+Sets provide `@` to encode non-printable ASCIIs with printable ones.
+Or just encode them as the actual non-printable byte.
 
 -----------------
 <sup>1)</sup> <small>A pattern with cascaded scans `~(x~(y~z))` on a input with 
