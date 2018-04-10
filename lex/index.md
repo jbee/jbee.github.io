@@ -70,47 +70,33 @@ Rules are byte instructions designed to give the
 appearance of syntax, but there is none.
 It is a byte-encoded interpreted language.
 
-**Sets**
-
-* `{abc}`   a set of bytes `a`,`b` and `c`
-* `{^ac}`   a set of any byte but `a` and `c`
-* `{a-c}`   a set of `a`, `b` and `c` given as a range
-* `}a-c{`   range of `a` to `c` and all non-ASCII bytes
-* `#`       any ASCII digit (=`{0-9}`)
-* `@`       any ASCII letter (=`{a-zA-Z}`)
-* `$`       ASCII newline (\n or \r)
-* `_`       any ASCII whitespace character
-* `^`       any byte that is not an ASCII whitespace character
-* `*`       any single byte
-
-All bytes within a set are matched literal, except `-`, `^`, `{` and `}`. 
-These need to be escaped with `\-`, `\^`, `\{` and `\}` to be matched literally.
-Other bytes _can_ be escaped but there is no need to.
-`{^}` matches `^`, `{-}` matches `-`. 
-`}{` matches all non ASCII bytes.
-
 **Repetition**
 
 * `+`      try previous set, group or literal again
 
 A `+` followed by more `+` is a slower version of one `+`.
 
+
 **Groups**
 
-* `(abc)`  a group where the sequence `abc` *must* occur
-* `[abc]`  a group with the sequence `abc` that *can* occur
+* `(abc)` a sequence `abc` that *must* occur
+* `[abc]` a sequence `abc` that *can* occur
 
-Groups are most useful when nested and used in 
-combination with `+`, like `(a[b(c)+])`.
-The regex `*` (zero or more) can be build using `[x]+`.
+Groups can be nested. The opening bracket control the type of group.
+The regex _*_ (zero or more) can be build using `[...]+`.
 
-`)` and `]` are identical and close the currently open group.
-Any open groups at the end of a pattern are implicitly closed.
+Clarification: `)`, `]` and even `}` are identical and close 
+the currently open group: `(...)` = `(...]` = `(...}`; `[...]` = `[...)` = `[...}`
+Open groups at the end of a pattern are implicitly closed.
+
+
+**Embedding**
 
 To embed an expression in another byte encoded instruction language the pattern
 can be enclosed in backticks: `` `...` ``. The `` ` `` instruction exits the
-current block unless it is the first byte in a block or pattern. 
+current group unless it is the first byte in a group or pattern. 
 As such it serves as a marker for the beginning of an embedded expression.
+
 
 **Scanning**
 
@@ -121,14 +107,50 @@ To end the match only on a specific sequence or pattern
 use a group: `a~(bc)` matches *`axxxbxxbc`*`xxbc`.
 
 A `~` followed by more `~` its a slower version of one `~`.
-A `~` followed by a `+` always is a mismatch.
+A `~` followed by a `+` is always a mismatch.
 
+
+**Sets**
+
+* `{abc}`   matches `a`,`b` or `c`
+* `{a-c}`   matches `a`, `b` or `c` (given as a range)
+* `{^ac}`   matches any byte but `a` or `c`
+
+Within a set `{...}` bytes are matched literally, except:
+* `\`_x_    matches `x` literally (typical escaping).
+* `@`_x_    matches _x ^ @_ (flips the 7th bit and thereby adds 64 for _x_ &lt; 64 and subtracts 64 for _x_ &gt;= 64)
+* `?`       matches any non-ASCII byte
+* `-`       matches a range (when not at the beginning or following `?`)
+* `^`       marks the set as exclusive set (when at the beginning)
+* `}`       marks the end of the set
+
+A range's upper and lower bounds are inclusive and can use 
+flipped `@`_x_ or escaped `\`_x_ bounds. 
+However, the upper bound is always interpreted literally: 
+`{+-?}` is the range from `+` to `?`.
+
+Clarification: Incomplete ranges, escapes or flips are ineffective 
+(no match), so that `{x-}` = `{x}`.
+`{-}`, `{^-}` or `{?-...}` aren't ranges but interpret `-` literally.
+Escaping `\t` is not _TAB_ but matching literally `t`;
+a _TAB_ can be encoded as `@I` (or use the actual _TAB_ byte).
+
+Shorthands instructions for common sets:
+* `#`       any ASCII digit (=`{0-9}`)
+* `@`       any ASCII letter (=`{a-zA-Z}`)
+* `$`       ASCII newline (\n or \r; = `{@J@M}`)
+* `_`       any ASCII whitespace character (= `{ @I@J@M}`)
+* `^`       any byte but ASCII whitespace characters (= `{^ @I@J@M}`)
+* `?`       any single byte (= `{^}`)
 
 **Literals**
 
-Any other byte (not `` {}()[]#@^_$+~*`\ ``) is matched literally. 
+Any other byte (not `` {}()[]#@^_$+~?`\ ``) is matched literally. 
 To match instructions literally they can be escaped with `\`.
-In sets only `{}^-` need escaping. In general any byte can be escaped.
+In general any byte can be escaped (also true in sets).
+So `\t` is not _TAB_ but literally `t`. 
+Sets provide `@` to encode non-printable ASCIIs with printable ones.
+Or just encode them as the actual non-printable byte.
 
 
 ## Encoding
@@ -138,9 +160,8 @@ of encoding. This plays well with some encodings, like
 UTF-8, and badly with others.
 
 UTF-8 literals can be matched by defining the pattern
-in UTF-8 as well. Sets can only allow `}...{` or  
-disallow `{...}` any non-ASCII byte what includes or
-excludes any non ASCII UTF-8 symbol. 
+in UTF-8 too. Sets can allow any non-ASCII byte 
+with `{?...}+` what includes any non ASCII UTF-8 symbol. 
 Most often this is sufficient for lexing.
 
 
@@ -152,7 +173,7 @@ Most often this is sufficient for lexing.
 * matching never goes backwards (in input or pattern)
 * `+` is always greedy (stops on first mismatch)
 * `~` is always non-greedy (stops on first match)
-* sets are limited to ASCII (a single byte)
+* sets are limited to ASCII (or single bytes)
 * `\` escaping can be applied to any subsequent byte anywhere
 * there are no modes
 * any sequence of bytes is a valid pattern and has defined semantics
@@ -197,7 +218,7 @@ Dates
 
 * `####/##/##`: *yyyy/mm/dd*
 * `##[##]/##/##`: *yy/mm/dd* or *yyyy/mm/dd*
-* `##{/-.}##{/-.}##`: *dd/mm/yy*, *dd-mm-yy* or *dd.mm.yy*
+* `##{-/.}##{-/.}##`: *dd/mm/yy*, *dd-mm-yy* or *dd.mm.yy*
 * `#[#]/#[#]/##[##]`: *d/m/yy*, *dd/mm/yy*, *d/m/yyyy* or *dd/mm/yyyy*
 
 Times
@@ -213,6 +234,7 @@ Numbers
 * `#+[,###]+`: with dividers; `42`, `42,000`, `42,000,000`, ...
 * `#+[.#+]`: simple floating points; `0.2`, `10`, `12.45`, ...
 * `#+[{_#}+#][{lL}]`: java integer literals; `5L`, `5_3`, `11__12`,
+* `[#+[{_,}###]+].#+[fFdD]`: java floating point literals; `1.0f`, `.2`, ...
 * `0b{01}+[_+{01}+]+`: java binary literal; `0b0000_1010`, ...
 * `0x{0-9A-Fa-f}+[_+{0-9A-Fa-f}+]+`: java hex literals; `0xCAFE_BABE`, ...
 
@@ -226,16 +248,19 @@ Strings
 Identifiers
 
 * `@+[{-_}{a-zA-Z0-9}+]+`: general letters and digits; `foo`, `Foo`, `foo-bar`, `fooBar`, `foo_bar`, `foo1`, `foo2bar`, ...
-* `\$@}a-zA-Z0-9_{+`: php style; `$foo`, `$föö`, `$FOO2`, `$foo_bar`
+* `\$@{?a-zA-Z0-9_}+`: php style; `$foo`, `$föö`, `$FOO2`, `$foo_bar`
 
 Phone Numbers
 
-* `[\+]#+[{ -}#+]+`: local or international; `0150 963852`, `0150-963852`, `+49 12345 698547`, ...
+* `[\+]#+[{- }#+]+`: local or international; `0150 963852`, `0150-963852`, `+49 12345 698547`, ...
 
 
 ## Philosophy
 
-Complex patterns might have multiple cases.
+Linear expressions have no OR construct.
+While this makes them (mostly) linear some patterns 
+naturally ask for multiple cases.
+
 In such cases a common super-pattern is used that
 potentially matches more but does not conflict with
 other patterns. Full conformity is then checked in 
