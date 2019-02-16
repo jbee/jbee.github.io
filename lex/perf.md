@@ -64,7 +64,7 @@ from above is used to fold 96-127 on 64-95.
 Finally 32-95 is mapped to 0-64.
 
 ```java
-private static long bit(byte b) {
+static long bit(byte b) {
 	return 1L << ((b > 95 ? (b & 0xDF) : b) -32);
 }
 ```
