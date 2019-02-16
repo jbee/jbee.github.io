@@ -1,10 +1,11 @@
 ---
 layout: default
 title: "a common theme"
+dark: true
 ---
 
 <nav>
-<b>Projects</b><br/><br/> {% for page in site.pages %}{% if page.categories contains 'project' %}<a href="{{ page.url }}" title="{{ page.summary }}">{{ page.title }}</a><br/> {% endif %}{% endfor %}
+<h2>Projects</h2> {% for page in site.pages %}{% if page.categories contains 'project' %}<a href="{{ page.url }}" title="{{ page.summary }}">{{ page.title }}</a><br/> {% endif %}{% endfor %}
 </nav>
 
 **a common theme**: how to not end up in a mess -- or -- less is more, nothing is everything. In code, writing and life. 
