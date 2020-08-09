@@ -1,7 +1,11 @@
 {% if page.links %}
-<nav><h2>Project</h2>
+<nav>
+    <h2>This Project</h2>
 	{% for link in page.links %}
 	<a href="{{ link[1] }}">{{ link[0] }}</a> {% unless forloop.last %}<br/>{% endunless %}
 	{% endfor %}
+	
+	<h2>Other Projects</h2>
+	{% for p in site.pages %}{% if p.categories contains 'project' and p.title != page.title %}<a href="{{ p.url }}" title="{{ p.summary }}">{{ p.title }}</a><br/> {% endif %}{% endfor %}
 </nav>
 {% endif %}

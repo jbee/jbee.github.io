@@ -17,7 +17,7 @@ links: { "issues": "https://github.com/jbee/purejin/issues", "github": "https://
 {% include links.html %}
 
 ## Dependency Injection with Pure Java Code
-_Purejin_ is a Java dependency injection library that only uses vanilla Java code 
+`purejin` is a Java dependency injection library that only uses vanilla Java code 
 to define a container context using a fluent binding API.
 
 It does not utilise annotations for injection guidance and avoids proxies,

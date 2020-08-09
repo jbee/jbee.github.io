@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Lex"
+title: "LEx"
 summary: "simple and fast first match text pattern matching"
 categories: [project, parsing]
 links: { "issues": "https://github.com/jbee/lex/issues", "github": "https://github.com/jbee/lex" }
