@@ -32,7 +32,7 @@ that work by convention. It also has no dependencies on its own.
 Instead only vanilla Java code and reflection are used which can be treated and 
 debugged like any other Java application to find issues and gain understanding.
 
-It goal is to organise and mudularise what otherwise would be manual wiring but
+It goal is to organise and modularise what otherwise would be manual wiring but
 to not impose any new restriction or way of working onto the application 
 developer.
 
@@ -48,11 +48,14 @@ If something is not covered [ask me](http://jbee.github.io).
 Dependency management through **code**. 
 No XML. No annotations. No code dependencies in the wrong direction. 
 Application code is written as if there is no DI library. 
+
 Indeed, this is the goal: wiring up the application had become so simple that no 
 sophisticated library is needed to aid it. 
 Purejin will make sophisticated wiring easier until it is no longer needed and
 gracefully disappears as simplicity emerges.
-It is particularly useful for highly configurable and/or modular applications.
+It is particularly useful for highly configurable and/or modular applications or
+for application developers that need a small simple tool to make the task of
+wiring easier.
 
 
 ## Why it came to be
@@ -64,7 +67,7 @@ their style wherby applications become highly dependent on the framework.
 The purejin library is intended as a substitute that in the end gets rid of itself.
 Confused? It's just saying: [Small is beautiful](http://www.infoq.com/presentations/small-large-systems).
 We meight not need a library for that, but if we decide to use one 
-it should support us not get in our way and dictate how to code.
+it should support us, not get in our way or dictate how to code.
 
 
 ## Why use it?
@@ -81,7 +84,7 @@ classloader magic etcetera.
 It really is just plain old boring code. 
 However, it makes a few strong decisions to keep dependency injection sane.
 It would be wise to not fight them but ask why and learn how to stay out of 
-trouble especially with large highly flexible applications.
+trouble especially with large, complex applications.
 
 
 ## What it does
@@ -106,7 +109,7 @@ trouble especially with large highly flexible applications.
 * give you headaches (through grotesque limitations, awkward patterns or cryptic error messages)
 * have you google for workarounds and write a lot of really ugly code to do what you want
 * have you clutter your code with hints for the library
-* have you waiting at every start of the application to do something too slow
+* have you waiting at every start of the application to bootstrap
 * unload half of maven central (and therby <a href="#what-about-maven">maven</a>) onto you
 * use techniques that -- while being fancy or "modern" -- cause any of the above
 
