@@ -32,7 +32,7 @@ that work by convention. It also has no dependencies on its own.
 Instead only vanilla Java code and reflection are used which can be treated and 
 debugged like any other Java application to find issues and gain understanding.
 
-It goal is to organise and modularise what otherwise would be manual wiring but
+Its goal is to organise and modularise what otherwise would be manual wiring but
 to not impose any new restriction or way of working onto the application 
 developer.
 
@@ -76,10 +76,11 @@ frameworks drive you in certain directions and limit you in others purejin is
 worth a try. 
 
 It's small, debuggable, straight forward stand alone library that makes common 
-things easy and uncommon ones easy to add.
-It avoids anything not refactoring-safe, confusing, _invisible_ or otherwise 
+things easy and uncommon ones easy to add or change.
+
+It avoids anything not refactoring-safe, confusing, "invisible" or otherwise 
 hard to maintain like XML, annotations, aspects, bytecode rewirting, 
-classloader magic etcetera.
+classloader magic, code generation, special build tools etcetera.
 
 It really is just plain old boring code. 
 However, it makes a few strong decisions to keep dependency injection sane.
@@ -89,7 +90,7 @@ trouble especially with large, complex applications.
 
 ## What it does
 * provide a type safe fluent API for...
-* binds this to that under those injection circumstances
+* binds this to that under those injection scenarios
 * binds types or instances (named instances of a type)
 * provides full generic support (`List<A>` != `List<B>` etcetera)
 * binds any class/interface (no exceptions or special handling)
@@ -105,6 +106,10 @@ trouble especially with large, complex applications.
 * ...
 
 ## What it doesn't do
+* build magic
+* proxy magic
+* interceptors
+* requiring annotations and thus access to the target type
 * capitalise on familiarity or proclaimed "ease of use" to get you hooked, then make itself indispensable; Later..
 * give you headaches (through grotesque limitations, awkward patterns or cryptic error messages)
 * have you google for workarounds and write a lot of really ugly code to do what you want
