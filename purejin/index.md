@@ -22,9 +22,9 @@ to define a container context using a fluent binding API.
 
 It does not utilise annotations for injection guidance and avoids proxies,
 bytecode manipulation and interception or any other technique that builds on
-conventions that have to be lerned.
+conventions that have to be learned.
 
-It only uses vanilla Java code and reflection to build an application's object graph 
+It only uses vanilla Java code and reflection to build an applications object graph 
 as if it was connected manually based on the bindings made using its fluent API.
 
 It is pure in the sense that it does not depend on other languages or mechanisms 
@@ -59,14 +59,14 @@ wiring easier.
 
 
 ## Why it came to be
-Existing libraries and frameworks felt like double edges swords that way to often 
+Existing libraries and frameworks felt like double-edged swords that way too often 
 got in the way of the application developer instead of making their lives easier.
 
 The major players have the tendency to bend the application development into
-their style wherby applications become highly dependent on the framework.
+their style whereby applications become highly dependent on the framework.
 The purejin library is intended as a substitute that in the end gets rid of itself.
 Confused? It's just saying: [Small is beautiful](http://www.infoq.com/presentations/small-large-systems).
-We meight not need a library for that, but if we decide to use one 
+We might not need a library for that, but if we decide to use one 
 it should support us, not get in our way or dictate how to code.
 
 
@@ -75,12 +75,12 @@ If you have already decided to use a container but you dislike the way popular
 frameworks drive you in certain directions and limit you in others purejin is
 worth a try. 
 
-It's small, debuggable, straight forward stand alone library that makes common 
+It's a small, debuggable, straightforward and standalone library that makes common 
 things easy and uncommon ones easy to add or change.
 
 It avoids anything not refactoring-safe, confusing, "invisible" or otherwise 
 hard to maintain like XML, annotations, aspects, bytecode rewirting, 
-classloader magic, code generation, special build tools etcetera.
+classloader magic, code generation, special build tools, etcetera.
 
 It really is just plain old boring code. 
 However, it makes a few strong decisions to keep dependency injection sane.
@@ -96,7 +96,7 @@ trouble especially with large, complex applications.
 * binds any class/interface (no exceptions or special handling)
 * binds multiple values together or in different modules and receives them as array, list, set
 * use your list/set implementations instead of javas (is really easy)
-* binds different configurations without `if`s everywhere (build in concepts)
+* binds different configurations without `if`s everywhere (built-in concepts)
 * binds in different scopes
 * use of your own scopes/lifecycles (is really easy)
 * use of your own provider interface to escape scoping problems (is really easy) 
@@ -155,11 +155,11 @@ Robot robot = injector.resolve(dependency(Robot.class));
 
 
 ## What about maven?
-Maven is part of the complexity problem. I you don't see that yet you will struggle to see
+Maven is part of the complexity problem. If you don't see that yet you will struggle to see
 why someone would prefer a library over a framework, code over annotations yadda yadda yadda. 
 
 Take it as a hint. Maybe you feel that something isn't right? 
-Then open your mind for the possibility that maven is one of those things and you'll understand eventually. 
+Then open your mind to the possibility that maven is one of those things and you'll understand eventually. 
 
 
 ## How to learn it
