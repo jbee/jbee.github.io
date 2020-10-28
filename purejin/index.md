@@ -17,79 +17,60 @@ links: { "issues": "https://github.com/jbee/purejin/issues", "github": "https://
 {% include links.html %}
 
 ## Dependency Injection with Pure Java Code
-`purejin` is a Java dependency injection library that only uses vanilla Java code 
-to define a container context using a fluent binding API.
+`purejin` is a Java dependency injection library that only uses vanilla Java code to define a container context using a fluent binding API.
 
-It does not utilise annotations for injection guidance and avoids proxies,
-bytecode manipulation and interception or any other technique that builds on
-conventions that have to be learned.
+It does not use annotations for injection guidance, avoids proxies, bytecode manipulation/interception or any other technique based on conventions that have to be learned.
 
-It only uses vanilla Java code and reflection to build an applications object graph 
-as if it was connected manually based on the bindings made using its fluent API.
+It only uses vanilla Java code and reflection to build an applications object graph as if it was connected manually based on the bindings made using its fluent API.
 
-It is pure in the sense that it does not depend on other languages or mechanisms 
-that work by convention. It also has no dependencies on its own. 
-Instead only vanilla Java code and reflection are used which can be treated and 
-debugged like any other Java application to find issues and gain understanding.
+Purejin is pure.
+It does not depend on other languages, other Java libraries or mechanisms that work by convention.
+It's just Java with a bit of reflection.
+This has the added benefit that it can be debugged and understood like a standard Java application.
 
-Its goal is to organise and modularise what otherwise would be manual wiring but
-to not impose any new restriction or way of working onto the application 
-developer.
+Its goal is to organise and modularise what otherwise would be manual wiring without imposing restrictions on the application developer.
 
 ## Outdated Documentation
-The detailed documentation provided earlier -- as so often -- got outdated when the code
-evolved. I decided to not explain something in words again that code can say so much better.
+The detailed documentation provided earlier -- as is so often the case -- got outdated when the code evolved.
+I decided not to explain in words what the code can say so much better.
 
 The following is not much but it will be accurate. 
 If something is not covered [ask me](http://jbee.github.io).
 
-
 ## What it is
 Dependency management through **code**. 
-No XML. No annotations. No code dependencies in the wrong direction. 
+No XML.
+No annotations.
+No code dependencies in the wrong direction. 
 Application code is written as if there is no DI library. 
 
-Indeed, this is the goal: wiring up the application had become so simple that no 
-sophisticated library is needed to aid it. 
-Purejin will make sophisticated wiring easier until it is no longer needed and
-gracefully disappears as simplicity emerges.
-It is particularly useful for highly configurable and/or modular applications or
-for application developers that need a small simple tool to make the task of
-wiring easier.
-
+This is the goal: wiring up the application had become so simple that no sophisticated library is needed to aid it. 
+Purejin will make sophisticated wiring easier until it is no longer needed and gracefully disappears as simplicity emerges.
+It is particularly useful for highly configurable and/or modular applications or for application developers that need a small simple tool to make the task of wiring easier.
 
 ## Why it came to be
-Existing libraries and frameworks felt like double-edged swords that way too often 
-got in the way of the application developer instead of making their lives easier.
+Existing libraries and frameworks felt like double-edged swords that way too often got in the way of the application developer instead of making their lives easier.
 
-The major players have the tendency to bend the application development into
-their style whereby applications become highly dependent on the framework.
+The major frameworks have the tendency to bend the application development into their style which leads to applications becoming highly dependent on the framework.
 The purejin library is intended as a substitute that in the end gets rid of itself.
-Confused? It's just saying: [Small is beautiful](http://www.infoq.com/presentations/small-large-systems).
-We might not need a library for that, but if we decide to use one 
-it should support us, not get in our way or dictate how to code.
-
+Confused?
+It's just saying: [Small is beautiful](http://www.infoq.com/presentations/small-large-systems).
+We might not need a library for that, but if we decide to use one it should support us, not get in our way or dictate how to code.
 
 ## Why use it?
-If you have already decided to use a container but you dislike the way popular
-frameworks drive you in certain directions and limit you in others purejin is
-worth a try. 
+If you have already decided to use a container but dislike the way popular frameworks drive you in certain directions and limit you in others purejin is worth a try.
 
-It's a small, debuggable, straightforward and standalone library that makes common 
-things easy and uncommon ones easy to add or change.
+It's a small, debuggable, straightforward and standalone library that makes common things easy and uncommon ones easy to add or change.
 
-It avoids anything not refactoring-safe, confusing, "invisible" or otherwise 
-hard to maintain like XML, annotations, aspects, bytecode rewirting, 
-classloader magic, code generation, special build tools, etcetera.
+It avoids anything not refactoring-safe, confusing, "invisible" or otherwise hard to maintain like XML, annotations, aspects, bytecode rewirting, classloader magic, code generation, special build tools, etcetera.
 
 It really is just plain old boring code. 
 However, it makes a few strong decisions to keep dependency injection sane.
-It would be wise to not fight them but ask why and learn how to stay out of 
-trouble especially with large, complex applications.
+It would be wise to not fight them but ask why and learn how to stay out of trouble especially with large, complex applications.
 
 
 ## What it does
-* provide a type safe fluent API for...
+* provides a type safe fluent API
 * binds this to that under those injection scenarios
 * binds types or instances (named instances of a type)
 * provides full generic support (`List<A>` != `List<B>` etcetera)
@@ -98,11 +79,11 @@ trouble especially with large, complex applications.
 * use your list/set implementations instead of javas (is really easy)
 * binds different configurations without `if`s everywhere (built-in concepts)
 * binds in different scopes
-* use of your own scopes/lifecycles (is really easy)
-* use of your own provider interface to escape scoping problems (is really easy) 
+* uses your own scopes/lifecycles (is really easy)
+* uses your own provider interface to escape scoping problems (is really easy) 
 * can restrict bindings to packages, types, instances or type/instance hierarchies or parents
 * tells you at **construction time** what is missing, ambigous or wrongly scoped.
-* ask you how to find and identify "things of interest" (instead of telling you how to mark them in your code)
+* asks you how to find and identify "things of interest" (instead of telling you how to mark them in your code)
 * ...
 
 ## What it doesn't do
@@ -110,7 +91,7 @@ trouble especially with large, complex applications.
 * proxy magic
 * interceptors
 * requiring annotations and thus access to the target type
-* capitalise on familiarity or proclaimed "ease of use" to get you hooked, then make itself indispensable; Later..
+* capitalise on familiarity or proclaimed "ease of use" to get you hooked, then make itself indispensable
 * give you headaches (through grotesque limitations, awkward patterns or cryptic error messages)
 * have you google for workarounds and write a lot of really ugly code to do what you want
 * have you clutter your code with hints for the library
@@ -155,19 +136,21 @@ Robot robot = injector.resolve(dependency(Robot.class));
 
 
 ## What about maven?
-Maven is part of the complexity problem. If you don't see that yet you will struggle to see
-why someone would prefer a library over a framework, code over annotations yadda yadda yadda. 
+Maven is part of the complexity problem.
+If you don't see that yet you will struggle to see why someone would prefer a library over a framework, code over annotations yadda yadda yadda. 
 
-Take it as a hint. Maybe you feel that something isn't right? 
-Then open your mind to the possibility that maven is one of those things and you'll understand eventually. 
+Take it as a hint.
+Maybe you feel that something isn't right? 
+Then open your mind to the possibility that maven is one of those things and you'll understand, eventually. 
 
 
 ## How to learn it
-The [tests](https://github.com/jbee/purejin/tree/master/src/test.integration/test/java/test/integration/bind)
-for the binding API illustrate what can be done and how to do it. 
-It's all ordinary [vanilla](http://en.wikipedia.org/wiki/Vanilla_software) code. Read it.
+The [tests](https://github.com/jbee/purejin/tree/master/src/test.integration/test/java/test/integration/bind) for the binding API illustrate what can be done and how to do it. 
+It's all ordinary [vanilla code](http://en.wikipedia.org/wiki/Vanilla_software).
+Read it.
 
-Not very handy but it doesn't lie. A tour could be to look at
+Not very handy but it doesn't lie.
+A tour could be to look at
 
 * [most basic](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestInstanceBinds.java) (wire this to that)
 * [constants](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestConstantBinds.java)
@@ -191,8 +174,9 @@ Not very handy but it doesn't lie. A tour could be to look at
 * [actions](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/action/TestActionBinds.java) (an extension to wire methods as services)
 
 Looking at the other tests in the same folder will also be useful. 
-There is more to discover. Most likely purejin allows to do what you want.
-Otherwise just ask [me](http://jbee.github.io) for help.
+There is more to discover.
+Most likely purejin allows you to do what you want.
+Otherwise just [ask me](http://jbee.github.io) for help.
 
 
 ## Curiosities
