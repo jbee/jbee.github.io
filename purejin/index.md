@@ -80,7 +80,7 @@ It would be wise to not fight them but ask why and learn how to stay out of trou
 * binds different configurations without `if`s everywhere (built-in concepts)
 * binds in different scopes
 * uses your own scopes/lifecycles (is really easy)
-* uses your own provider interface to escape scoping problems (is really easy) 
+* can use your own provider interface to escape scoping problems (easy to setup)
 * can restrict bindings to packages, types, instances or type/instance hierarchies or parents
 * tells you at **construction time** what is missing, ambigous or wrongly scoped.
 * asks you how to find and identify "things of interest" (instead of telling you how to mark them in your code)
