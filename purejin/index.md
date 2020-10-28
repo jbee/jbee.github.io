@@ -79,7 +79,7 @@ It would be wise to not fight them but ask why and learn how to stay out of trou
 * use your list/set implementations instead of javas (is really easy)
 * binds different configurations without `if`s everywhere (built-in concepts)
 * binds in different scopes
-* uses your own scopes/lifecycles (is really easy)
+* can use your own scopes/lifecycles (easy to setup)
 * can use your own provider interface to escape scoping problems (easy to setup)
 * can restrict bindings to packages, types, instances or type/instance hierarchies or parents
 * tells you at **construction time** what is missing, ambigous or wrongly scoped.
