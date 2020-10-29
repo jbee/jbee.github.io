@@ -33,6 +33,7 @@ Users declare a set of declarative statements about the (container) world.
 These statements are transformed to a fixed and final container model.
 Alongside the immutable model there is a pool of managed instances.
 Calling resolution functions on the container is like a computation on its model state that might create new managed instances in the pool as a _side-effect_.
+This is easy to reason about and allows for state validation at the end of bootstrapping a container.
 
 Its goal is to organise and modularise what otherwise would be manual wiring without imposing restrictions on the application developer.
 
