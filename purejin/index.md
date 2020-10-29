@@ -28,8 +28,8 @@ It does not depend on other languages, other Java libraries or mechanisms that w
 It's just Java with reflection (no unsafe).
 This has the added benefit that it can be debugged and understood like a standard Java application.
 
-It is also pure with regards to the programming style used:
-Users once make set of declarative statements about the (container) world.
+Purejin's programming style is inspired by pure functional style:
+Users declare a set of declarative statements about the (container) world.
 These statements are transformed to a fixed and final container model.
 Alongside the immutable model there is a pool of managed instances.
 Calling resolution functions on the container is like a computation on its model state that might create new managed instances in the pool as a _side-effect_.
