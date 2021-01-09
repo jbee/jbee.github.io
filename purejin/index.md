@@ -195,6 +195,6 @@ Otherwise just [ask me](http://jbee.github.io) for help.
 
 ## Curiosities
 
-* [mocking](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestMockingBinds.java): "teach" the container to mock undefined dependencies in tests
-* [state-switches](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestStateDependentBinds.java): inject different instances depending on runtime state
-* [initialisers](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestInitialiserBinds.java): using "post construct" to automatically close `AutoCloseable`s
+* [mocking](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestExampleAutoStubbingInterfacesBinds.java): "teach" the container to mock undefined dependencies in tests
+* [state-switches](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestExampleStateDependentInjectionBinds.java): inject different instances depending on runtime state
+* [Lifts](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestExampleLiftAutoCloseableBinds.java): using "post construct" to automatically close `AutoCloseable`s
