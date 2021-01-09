@@ -32,7 +32,7 @@ Purejin's programming style is inspired by pure functional style:
 Users declare a set of declarative statements about the (container) world.
 These statements are transformed to a fixed and final container model.
 Alongside the immutable model there is a pool of managed instances.
-Calling resolution functions on the container is like a computation on its model state that might create new managed instances in the pool as a _side-effect_.
+Calling resolution functions on the container is like a computation on its model state that might create new managed instances in the pool as a "side-effect".
 This is easy to reason about and allows for state validation at the end of bootstrapping a container.
 
 Its goal is to organise and modularise what otherwise would be manual wiring without imposing restrictions on the application developer.
@@ -89,7 +89,7 @@ It would be wise to not fight them but ask why and learn how to stay out of trou
 * can use your own scopes/lifecycles (easy to setup)
 * can use your own provider interface to escape scoping problems (easy to setup)
 * can restrict bindings to packages, types, instances or type/instance hierarchies or parents
-* tells you at **construction time** what is missing, ambigous or wrongly scoped.
+* tells you at **bootstrapping time** what is missing, ambigous or wrongly scoped.
 * asks you how to find and identify "things of interest" (instead of telling you how to mark them in your code)
 * ...
 
@@ -121,12 +121,12 @@ class RobotLegsProblem extends BinderModule {
 	protected void declare() {
 		construct(Robot.class);
 		//...
-		bind(left, Leg.class).toConstructor();
-		bind(right, Leg.class).toConstructor();
-		injectingInto(left, Leg.class)
-			.bind(Foot.class).to(left, Foot.class);
-		injectingInto(right, Leg.class)
-			.bind(Foot.class).to(right, Foot.class);
+		bind("left", Leg.class).toConstructor();
+		bind("right", Leg.class).toConstructor();
+		injectingInto("left", Leg.class)
+			.bind(Foot.class).to("left", Foot.class);
+		injectingInto("right", Leg.class)
+			.bind(Foot.class).to("right", Foot.class);
 	}
 }
 ```
@@ -140,7 +140,7 @@ Resolve the root instance:
 ```java
 Robot robot = injector.resolve(dependency(Robot.class)); 
 ```
-
+(or any other instance for that matter)
 
 ## What about maven?
 Maven is part of the complexity problem.
@@ -152,37 +152,44 @@ Then open your mind to the possibility that maven is one of those things and you
 
 
 ## How to learn it
-The [tests](https://github.com/jbee/purejin/tree/master/src/test.integration/test/java/test/integration/bind) for the binding API illustrate what can be done and how to do it. 
+The [tests](https://github.com/jbee/purejin/tree/master/test.integration/test/java/test/integration/bind) for the binding API illustrate what can be done and how to do it. 
 It's all ordinary [vanilla code](http://en.wikipedia.org/wiki/Vanilla_software).
 Read it.
 
 Not very handy but it doesn't lie.
-A tour could be to look at
+Keep in mind that purejin is a library that is designed as a toolbox. 
+You pick what you need and adjust it to your case. 
+This means there is no such thing as THE way to do things. There are often many ways to reach a goal each having their own pros and cons.
+The more concepts you know the more possibilities you will see. 
 
-* [most basic](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestInstanceBinds.java) (wire this to that)
-* [constants](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestConstantBinds.java)
-* [primitives](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestPrimitiveBinds.java)
-* [arrays](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestElementBinds.java)
-* [primitive arrays](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestPrimitiveArrayBinds.java)
-* [collections](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestCollectionBinds.java)
-* [parent dependent binds](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestParentTargetBinds.java)
-* [package dependent binds](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestPackageLocalisedBinds.java)
-* [auto-binds](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestAutobindBinds.java) (bind supertypes)
-* [multi-binds](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestMultibindBinds.java) (bind multiple values)
-* [toggles](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestToggledBinds.java) and [choices](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestMultipleChoicesBinds.java) (or how to not end up with if's)
-* [presets](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestModuleWithBinds.java) (or how not to pass values around in module code)
-* [require-provide](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestRequiredProvidedBinds.java) (loose coupling like to OSGi requirements and capabilities)
-* [loggers](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestLoggerBinds.java) (example of target specific injection)
-* [parameter hinting 1](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestSpecificImplementationBinds.java)
-* [robots legs problem](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestRobotLegsProblemBinds.java)
-* [parameter hinting 2](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestConstructorHintBinds.java)
-* [providers](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestProviderBinds.java) (think guice provider)
-* [plug-ins](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/bind/TestPluginBinds.java) (a basic extension mechanism)
-* [actions](https://github.com/jbee/purejin/blob/master/src/test.integration/test/java/test/integration/action/TestActionBinds.java) (an extension to wire methods as services)
+Basics
 
-Looking at the other tests in the same folder will also be useful. 
-There is more to discover.
-Most likely purejin allows you to do what you want.
+* [basic bind](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicInstanceBinds.java) (wire this to that)
+* [constants](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicConstantBinds.java)
+* [primitives](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicPrimitiveValueBinds.java)
+* [arrays](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicArrayElementBinds.java)
+* [primitive arrays](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicPrimitiveArrayBridgeBinds.java)
+* [collections](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicCollectionBinds.java)
+* [parent dependent binds](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicParentLocalBinds.java)
+* [package dependent binds](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicPackageLocalBinds.java)
+* [API dependent binds](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicSuperbindBinds.java) (bind to supertypes that are concidered an API)
+* [API dependent binds 2](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestExampleLocalPublishesByBinds.java) (local overrides to what is considered API)
+* [multi-binds](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicMultibindBinds.java) (compose a set/list/array by binding same type at multiple places)
+* [hints](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicHintsBinds.java) (select which exact instance to inject elsewhere)
+* [providers](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestFeatureProviderBinds.java) (think guice provider)
+
+Configuration/Modularity
+
+* [Env dependent binds](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicModuleWithBinds.java) 
+* [Env dependent installation](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicBundleForBinds.java) (or how to not end up with if's in the bundles and modules)
+* [require-provide](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicRequiredProvidedBinds.java) (loose coupling like a simple version to OSGi requirements and capabilities)
+
+Usage Examples
+
+* [loggers](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicLoggerBinds.java) (example of target specific injection)
+* [robots legs problem](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestExampleRobotLegsProblemBinds.java)
+
+There are many more examples and many more concepts. Have a look at other tests in the same folder. 
 Otherwise just [ask me](http://jbee.github.io) for help.
 
 
