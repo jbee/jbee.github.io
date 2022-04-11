@@ -1,15 +1,22 @@
 ---
 layout: default
-title: "a common theme"
+title: jbee.github.io - Jan Bernitt
 dark: false
 ---
 
-> I have yet to see any problem, however complicated, which, when you looked at it in the right way, did not become still more complicated. --- *[Anderson's Law](https://en.wikiquote.org/wiki/Poul_Anderson)*
+# jbee.github.io
 
-## Projects
-{% for page in site.pages %}{% if page.categories contains 'project' %}<a href="{{ page.url }}" title="{{ page.summary }}">{{ page.title }}</a>: {{ page.summary }}<br/> {% endif %}{% endfor %}
+Welcome on my person page.
 
+Read my <a href="/cv/">CV</a>,
+<p>or have a look at bit of extra documentation and background on my main pet projects:
+<ul>
+{% for page in site.pages %}{% if page.categories contains 'project' %}<li><a href="{{ page.url }}" title="{{ page.summary }}">{{ page.title }}</a>: {{ page.summary }}</li> {% endif %}{% endfor %}
+</ul>
+</p>
+
+<!--
 ## Posts
 
 {% for page in site.pages %}{% if page.categories contains 'writing' %}<a href="{{ page.url }}" title="{{ page.summary }}">{{ page.title }}</a><br/>{% endif %}{% endfor %}
-
+-->

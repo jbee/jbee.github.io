@@ -1,22 +1,13 @@
 ---
 layout: default
-title: "LEx"
+title: "Linear EXpressions"
 summary: "simple and fast first match text pattern matching"
 categories: [project, parsing]
 links: { "issues": "https://github.com/jbee/lex/issues", "github": "https://github.com/jbee/lex" }
-bgcolor: "DeepSkyBlue"
-color: "#234"
+tags: [spec, v2, pattern matching, parsing, terminals]
 ---
 
 # Linear EXpressions
-
-* spec
-* v2
-* pattern matching
-* parsing
-* terminals
-
-{% include links.html %}
 
 Linear expression are a intuitive pattern language to 
 find or check patterns and their end position in byte sequences.

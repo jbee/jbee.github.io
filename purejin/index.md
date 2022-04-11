@@ -1,20 +1,17 @@
 ---
 layout: default
-title: "purejin"
+title: PURE Java INjection
 summary: "Java dependency injection through code"
 categories: [project, java, "dependency injection"]
 color: "#434"
 bgcolor: "Gold"
 links: { "issues": "https://github.com/jbee/purejin/issues", "github": "https://github.com/jbee/purejin" }
+tags: [ java, dependency injection, library, refactoring]
 ---
 
-# purejin
-* java
-* dependency injection
-* library
-* refactoring
+# PURE Java INjection
 
-{% include links.html %}
+Java dependency injection through code.
 
 ## Dependency Injection with Pure Java Code
 `purejin` is a Java dependency injection library that only uses vanilla Java code to define a container context using a fluent binding API.
@@ -108,11 +105,6 @@ It would be wise to not fight them but ask why and learn how to stay out of trou
 
 
 ## How to use it
-Checkout the [sources](https://github.com/jbee/purejin).
-
-Build system is currently changed to [bach](https://github.com/sormuras/bach/) - 
-Details are comming soon to the project home page.
-
 Declare some bindings in a module using a fluent API:
 ```java
 class RobotLegsProblem extends BinderModule {
@@ -141,15 +133,6 @@ Resolve the root instance:
 Robot robot = injector.resolve(dependency(Robot.class)); 
 ```
 (or any other instance for that matter)
-
-## What about maven?
-Maven is part of the complexity problem.
-If you don't see that yet you will struggle to see why someone would prefer a library over a framework, code over annotations yadda yadda yadda. 
-
-Take it as a hint.
-Maybe you feel that something isn't right? 
-Then open your mind to the possibility that maven is one of those things and you'll understand, eventually. 
-
 
 ## How to learn it
 The [tests](https://github.com/jbee/purejin/tree/master/test.integration/test/java/test/integration/bind) for the binding API illustrate what can be done and how to do it. 

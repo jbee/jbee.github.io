@@ -3,13 +3,10 @@ layout: default
 title: "Byte Thimblerigger"
 summary: "byte level performance tricks"
 categories: [writing, detail, performance]
+tags: [performance, optimisation, low-level]
 ---
 
 # Byte Thimblerigger
-
-* performance
-* optimisation
-* low-level
 
 A very brief overview of optimisations that are (or can
 be) used to optimize `int` or `byte` based computations 

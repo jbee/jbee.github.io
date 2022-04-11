@@ -1,12 +1,9 @@
 ---
 layout: default
+tags: [java, dependency injection, models]
 ---
 
 # A Different Container
-
-* java
-* dependency injection
-* models
 
 Let me try to explain why silk DI is not similar to (most) other containers like google guice, dagger or spring DI and why it matters.
 
