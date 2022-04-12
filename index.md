@@ -6,14 +6,19 @@ dark: false
 
 # jbee.github.io
 
-Welcome on my person page.
+Welcome on my personal page.
+<p>This page is dedicated to my adventues in programming.</p>
 
-Read my <a href="/cv/">CV</a>,
-<p>or have a look at bit of extra documentation and background on my main pet projects:
-<ul>
-{% for page in site.pages %}{% if page.categories contains 'project' %}<li><a href="{{ page.url }}" title="{{ page.summary }}">{{ page.title }}</a>: {{ page.summary }}</li> {% endif %}{% endfor %}
-</ul>
-</p>
+Read my <a href="/cv/">CV</a>, or have a look at bit of extra documentation and background on my main pet projects...
+
+<dl>
+	<dt>See Also:</dt>
+	<dd>
+		{% for page in site.pages %}{% if page.categories contains 'project' %}
+		<a href="{{ page.url }}" title="{{ page.summary }}">{{ page.title }}</a> &nbsp; {{ page.summary }}<br/>
+		{% endif %}{% endfor %}
+	</dd>
+</dl>
 
 <!--
 ## Posts

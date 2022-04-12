@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Linear EXpressions"
-summary: "simple and fast first match text pattern matching"
+summary: "Simple and fast first match text pattern matching"
 categories: [project, parsing]
 links: { "issues": "https://github.com/jbee/lex/issues", "github": "https://github.com/jbee/lex" }
 tags: [spec, v2, pattern matching, parsing, terminals]
