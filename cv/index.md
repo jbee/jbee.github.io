@@ -151,8 +151,8 @@ Thinking and designing solutions that are minimal, flexible and maintainable.
 		<address>Åseda, Sweden<br/>
 		<a href="tel:+46722389563" title="call me">+46 72 238 95 63</a><br/>
 		<a href="mailto:jaanbernitt@gmail.com" title="email me">jaanbernitt@gmail.com</a><br/>
-		<a href="http://jbee.github.io/" title="This page">http://jbee.github.io/</a><br/>
-		<a href="https://github.com/jbee" title="Me on GH">https://github.com/jbee</a><br/>
+		<a href="http://jbee.github.io/" title="This page" target="_blank">http://jbee.github.io/</a><br/>
+		<a href="https://github.com/jbee" title="Me on GH" target="_blank">https://github.com/jbee</a><br/>
 		</address>
 	</dd>
 </dl>

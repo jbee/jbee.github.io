@@ -5,12 +5,12 @@
 	<table width="75%" cellspacing="0" cellpadding="1" border="0"><tr><td>
 	&nbsp;<a href="/" title="Home"><span>Overview</span></a>&nbsp;
 	&nbsp;<a href="/cv/"><span>CV</span></a>&nbsp;
-	&nbsp;<a href="https://github.com/jbee"><span>Github</span></a>&nbsp;
+	&nbsp;<a href="https://github.com/jbee" target="_blank"><span>Github</span></a>&nbsp;
 	</td></tr></table>
 	<div>PROJECTS: &nbsp;<a href="/purejin/"><span>PURE Java INjection</span></a>&nbsp; | &nbsp;<a href="/lex/"><span>Linear EXpressions</span></a>&nbsp;</div>
 	{% if page.links %}
 	<div>{{ page.title }}:
-	{% for link in page.links %}&nbsp;<a href="{{ link[1] }}">{{ link[0] }}</a>&nbsp;{% unless forloop.last %} | {% endunless %}{% endfor %}
+	{% for link in page.links %}&nbsp;<a href="{{ link[1] }}" target="_blank">{{ link[0] }}</a>&nbsp;{% unless forloop.last %} | {% endunless %}{% endfor %}
 	</div>
 	{% endif %}
 </nav>
