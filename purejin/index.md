@@ -145,7 +145,9 @@ You pick what you need and adjust it to your case.
 This means there is no such thing as THE way to do things. There are often many ways to reach a goal each having their own pros and cons.
 The more concepts you know the more possibilities you will see. 
 
-Basics
+----
+
+### Basics
 
 * [basic bind](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicInstanceBinds.java) (wire this to that)
 * [constants](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicConstantBinds.java)
@@ -161,13 +163,17 @@ Basics
 * [hints](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicHintsBinds.java) (select which exact instance to inject elsewhere)
 * [providers](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestFeatureProviderBinds.java) (think guice provider)
 
-Configuration/Modularity
+----
+
+### Configuration / Modularity
 
 * [Env dependent binds](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicModuleWithBinds.java) 
 * [Env dependent installation](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicBundleForBinds.java) (or how to not end up with if's in the bundles and modules)
 * [require-provide](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicRequiredProvidedBinds.java) (loose coupling like a simple version to OSGi requirements and capabilities)
 
-Usage Examples
+----
+
+### Usage Examples
 
 * [loggers](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestBasicLoggerBinds.java) (example of target specific injection)
 * [robots legs problem](https://github.com/jbee/purejin/blob/master/test.integration/test/java/test/integration/bind/TestExampleRobotLegsProblemBinds.java)

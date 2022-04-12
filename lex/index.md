@@ -61,14 +61,15 @@ Rules are byte instructions designed to give the
 appearance of syntax, but there is none.
 It is a byte-encoded interpreted language.
 
-**Repetition**
+### Repetition
 
 * `+`      try previous set, group or literal again
 
 A `+` followed by more `+` is a slower version of one `+`.
 
+----
 
-**Groups**
+### Groups
 
 * `(abc)` a sequence `abc` that *must* occur
 * `[abc]` a sequence `abc` that *can* occur
@@ -78,16 +79,18 @@ The regex _*_ (zero or more) can be build using `[...]+`.
 
 Open groups at the end of a pattern are implicitly closed.
 
+----
 
-**Embedding**
+### Embedding
 
 To embed an expression in another byte encoded instruction language the pattern
 can be enclosed in backticks: `` `...` ``. The `` ` `` instruction exits the
 current group unless it is the first byte in a group or pattern. 
 As such it serves as a marker for the beginning of an embedded expression.
 
+----
 
-**Scanning**
+### Scanning
 
 * `~`      skip input until following set, group or literal matches
 
@@ -95,7 +98,9 @@ A `~` followed by more `~` its a slower version of one `~`.
 A `~` followed by a `+` is always a mismatch.
 
 
-**Sets**
+----
+
+### Sets
 
 * `{abc}`   matches `a`,`b` or `c`
 * `{a-c}`   matches `a`, `b` or `c` (given as a range)
@@ -121,7 +126,9 @@ There are extra shorthands instructions for common sets:
 * `^`       any byte but ASCII whitespace characters (= `{^ @I@J@M}`)
 * `?`       any single byte (= `{^}`)
 
-**Literals**
+----
+
+### Literals
 
 Any other byte (not `` {}()[]#@^_$+~?`\ ``) is matched literally. 
 To match instructions literally they can be escaped with `\`.
@@ -190,21 +197,25 @@ shortest or longest but generally this is not possible.
 ## Examples
 Examples of a pattern an the inputs they match:
 
-Dates
+### Dates
 
 * `####/##/##`: *yyyy/mm/dd*
 * `##[##]/##/##`: *yy/mm/dd* or *yyyy/mm/dd*
 * `##{-/.}##{-/.}##`: *dd/mm/yy*, *dd-mm-yy* or *dd.mm.yy*
 * `#[#]/#[#]/##[##]`: *d/m/yy*, *dd/mm/yy*, *d/m/yyyy* or *dd/mm/yyyy*
 
-Times
+---- 
+
+### Times
 
 * `##:##`: *hh:mm*
 * `##:##[:##]` : *hh:mm* or *hh:mm:ss*
 * `##:##:##[.###]`: *hh:mm:ss* or *hh:mm:ss.SSS* (ms)
 * `##[:##][:##].###`: *hh:mm:ss.SSS*, *mm:ss.SSS* or *ss.SSS*
 
-Numbers
+----
+
+### Numbers
 
 * `#+`: simple integers; `1`, `42`, `345`, ...
 * `#+[,###]+`: with dividers; `42`, `42,000`, `42,000,000`, ...
@@ -214,19 +225,25 @@ Numbers
 * `0b{01}+[_+{01}+]+`: java binary literal; `0b0000_1010`, ...
 * `0x{0-9A-Fa-f}+[_+{0-9A-Fa-f}+]+`: java hex literals; `0xCAFE_BABE`, ...
 
-Strings
+----
+
+### Strings
 
 * `"{^"}+"`: quoted string (no escaping); `"foo"`, `"1"`, ...
 * `"~"`: quoted string (no escaping); `"foo"`, `"1"`, ...
 * `"~({^\}")`: quoted string (escaping); `"foo"`, `"foo\"bar"`, ... 
 * `"""~(""")`: triple quoted string; `"""foo"""`, `"""foo"bar"baz"""`, ...
 
-Identifiers
+----
+
+### Identifiers
 
 * `@+[{-_}{a-zA-Z0-9}+]+`: general letters and digits; `foo`, `Foo`, `foo-bar`, `fooBar`, `foo_bar`, `foo1`, `foo2bar`, ...
 * `\$@{?a-zA-Z0-9_}+`: php style; `$foo`, `$föö`, `$FOO2`, `$foo_bar`
 
-Phone Numbers
+----
+
+### Phone Numbers
 
 * `[\+]#+[{- }#+]+`: local or international; `0150 963852`, `0150-963852`, `+49 12345 698547`, ...
 
